@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TypeIt from "typeit-react";
 import "./style.css";
+import StatusBar from "../components/StatusBar";
 
 const PageDialog = ({
   NamaKarakter,
@@ -10,28 +11,29 @@ const PageDialog = ({
   hari,
   background,
   alert,
+  status,
 }) => {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertClass, setAlertClass] = useState("");
   const [alertType, setAlertType] = useState(false);
-  const [disabledOption, setDisabledOption] = useState(null); // State untuk menonaktifkan tombol
+  const [disabledOption, setDisabledOption] = useState(null);
 
   const handleOptionClick = (option, index) => {
     setAlertVisible(true);
     setAlertType(option.type);
     setAlertClass("animate-slide-in");
 
-    option.action(); // Jalankan logika opsi
+    option.action();
 
-    setDisabledOption(index); // Menonaktifkan tombol yang dipilih
+    setDisabledOption(index);
 
     setTimeout(() => {
       setAlertClass("animate-slide-out");
       setTimeout(() => {
         setAlertVisible(false);
-        setAlertClass(""); // Reset class after hiding
-      }, 500); // Durasi animasi keluar
-    }, 3000); // Menyembunyikan alert setelah 3 detik
+        setAlertClass("");
+      }, 500);
+    }, 3000);
   };
 
   return (
@@ -41,7 +43,16 @@ const PageDialog = ({
         alt=""
         className="absolute opacity-80 w-screen h-screen overflow-y-hidden"
       />
-      <p className="p-10 relative text-xl font-bold text-white">{hari}</p>
+      <div className="relative z-10 flex justify-between">
+        <p className="p-10 relative text-xl font-bold text-white">{hari}</p>
+        <div className="flex relative z-10">
+          {/* Menggunakan nilai status terkini */}
+          <StatusBar
+            kesenangan={status.kesenangan}
+            pertemanan={status.pertemanan}
+          />
+        </div>
+      </div>
       <div className="relative bottom-14">
         <div className="bottom-20 h-screen relative flex justify-center items-center">
           <img className="w-80" src={gambarkarakter} alt="" />
@@ -57,7 +68,6 @@ const PageDialog = ({
               options={{
                 speed: 50,
                 waitUntilVisible: true,
-                startDelay: 3500,
               }}
             >
               {Dialog}
@@ -71,7 +81,7 @@ const PageDialog = ({
                 className="button-56"
                 role="button"
                 onClick={() => handleOptionClick(option, index)}
-                disabled={disabledOption !== null && disabledOption !== index} // Nonaktifkan tombol selain yang dipilih
+                disabled={disabledOption !== null && disabledOption !== index}
               >
                 {option.text}
               </button>

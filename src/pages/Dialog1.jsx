@@ -65,6 +65,10 @@ const Dialog1 = () => {
         hari="Hari Pertama"
         background="/bg.png"
         alert={feedback}
+        status={{
+          kesenangan,
+          pertemanan,
+        }} // Status diteruskan sebagai objek
       />
     </>
   );
