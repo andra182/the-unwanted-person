@@ -5,6 +5,7 @@ import Day1 from "../pages/Day1";
 import Day2 from "../pages/Day2";
 import Dialog1 from "../pages/Dialog1";
 import Dialog2 from "../pages/Dialog2";
+import PageDialog from "../pages/PageDialog";
 // import NotFoundPage from "../pages/NotFoundPage"; // Optional, untuk halaman tidak ditemukan
 
 const routes = createBrowserRouter([
@@ -40,6 +41,10 @@ const routes = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/test",
+    element: <PageDialog />
+  }
   // {
   //   path: "*", // Menangani route yang tidak ditemukan
   //   element: <NotFoundPage />,

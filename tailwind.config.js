@@ -3,13 +3,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      colors: {
-        green: {
-          500: "#4caf50",
-        },
-        blue: {
-          500: "#2196f3",
-        },
+      boxShadow: {
+        "multi-outline": "0 0 0 4px #FFEE00,  0 0 0 9px #000000",
       },
     },
   },
