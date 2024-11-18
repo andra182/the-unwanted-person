@@ -70,7 +70,7 @@
         transform: translateX(0); /* Mulai dari posisi normal */
     }
     100% {
-        transform: translateX(-100%); /* Bergerak keluar ke kanan */
+        transform: translateX(-120%); /* Bergerak keluar ke kanan */
     }
 }
 

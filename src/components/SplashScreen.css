@@ -1,0 +1,207 @@
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 1s ease-in-out;
+    z-index: 9999; /* Pastikan splash screen berada di atas konten lainnya */
+}
+
+.splash-text {
+    color: white;
+    font-size: 3rem;
+    opacity: 0;
+    transform: translateY(100%); /* Mulai dari bawah */
+    animation: slide-up 1s forwards; /* Animasi menarik ke atas */
+}
+
+.fade-in .splash-text {
+    animation: fade-in 1s forwards;
+}
+
+.fade-out {
+    transform: translateY(-100%); /* Menarik ke atas saat menghilang */
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} 
+
+
+
+/* H1 Style */
+.splash-text {
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  /* Neon Effect for Text */
+  .neon-light {
+    position: relative;
+    color: #ffffff; /* Base text color */
+    text-shadow: 
+      0 0 5px rgba(222, 217, 217, 0.8), 
+      0 0 10px rgba(222, 217, 217, 0.8), 
+      0 0 20px rgba(222, 217, 217, 1), 
+      0 0 40px rgba(222, 217, 217, 1), 
+      0 0 60px rgba(222, 217, 217, 1);
+    backdrop-filter: blur(10px); /* Blur effect matching text */
+    animation: flicker 4s infinite; /* Durasi 6 detik untuk efek dramatis */
+  }  
+  
+  /* Keyframes for flickering animation */
+  @keyframes flicker {
+    0% {
+      text-shadow: 
+        0 0 5px rgba(222, 217, 217, 0.8), 
+        0 0 10px rgba(222, 217, 217, 0.8), 
+        0 0 20px rgba(222, 217, 217, 1), 
+        0 0 40px rgba(222, 217, 217, 1), 
+        0 0 60px rgba(222, 217, 217, 1);
+    }
+    5% {
+      text-shadow: 
+        0 0 3px rgba(222, 217, 217, 0.3), 
+        0 0 6px rgba(222, 217, 217, 0.5), 
+        0 0 9px rgba(222, 217, 217, 0.6), 
+        0 0 12px rgba(222, 217, 217, 0.7), 
+        0 0 15px rgba(222, 217, 217, 0.7);
+    }
+    8% {
+      text-shadow: none;
+    }
+    12% {
+      text-shadow: 
+        0 0 8px rgba(222, 217, 217, 0.9), 
+        0 0 16px rgba(222, 217, 217, 1), 
+        0 0 32px rgba(222, 217, 217, 1.1), 
+        0 0 48px rgba(222, 217, 217, 1.3), 
+        0 0 64px rgba(222, 217, 217, 1.5);
+    }
+    20% {
+      text-shadow: 
+        0 0 5px rgba(222, 217, 217, 0.6), 
+        0 0 10px rgba(222, 217, 217, 0.7), 
+        0 0 20px rgba(222, 217, 217, 0.9), 
+        0 0 30px rgba(222, 217, 217, 1), 
+        0 0 40px rgba(222, 217, 217, 1.1);
+    }
+    28% {
+      text-shadow: none;
+    }
+    40% {
+      text-shadow: 
+        0 0 10px rgba(222, 217, 217, 1), 
+        0 0 20px rgba(222, 217, 217, 1.2), 
+        0 0 40px rgba(222, 217, 217, 1.4), 
+        0 0 60px rgba(222, 217, 217, 1.6), 
+        0 0 80px rgba(222, 217, 217, 1.8);
+    }
+    60% {
+      text-shadow: 
+        0 0 4px rgba(222, 217, 217, 0.4), 
+        0 0 8px rgba(222, 217, 217, 0.5), 
+        0 0 12px rgba(222, 217, 217, 0.6), 
+        0 0 16px rgba(222, 217, 217, 0.7), 
+        0 0 20px rgba(222, 217, 217, 0.7);
+    }
+    75% {
+      text-shadow: 
+        0 0 6px rgba(222, 217, 217, 0.7), 
+        0 0 12px rgba(222, 217, 217, 0.8), 
+        0 0 18px rgba(222, 217, 217, 0.9), 
+        0 0 24px rgba(222, 217, 217, 1), 
+        0 0 30px rgba(222, 217, 217, 1.1);
+    }
+    90%, 100% {
+      text-shadow: 
+        0 0 10px rgba(222, 217, 217, 1), 
+        0 0 20px rgba(222, 217, 217, 1.3), 
+        0 0 30px rgba(222, 217, 217, 1.5), 
+        0 0 40px rgba(222, 217, 217, 1.7), 
+        0 0 50px rgba(222, 217, 217, 2);
+    }
+  }
+  
+  
+  @keyframes shadow-flicker {
+    0% {
+      text-shadow: 
+        0 0 8px rgba(245, 243, 206, 0.8), 
+        0 0 16px rgba(245, 243, 206, 1), 
+        0 0 24px rgba(255, 255, 128, 1), 
+        0 0 40px rgba(255, 255, 128, 1.2), 
+        0 0 60px rgba(255, 255, 128, 1.5);
+    }
+    5% {
+      text-shadow: 
+        0 0 4px rgba(245, 243, 206, 0.5), 
+        0 0 8px rgba(245, 243, 206, 0.6), 
+        0 0 12px rgba(255, 255, 128, 0.7), 
+        0 0 20px rgba(255, 255, 128, 0.7);
+    }
+    10% {
+      text-shadow: none; /* Shadow disappears */
+    }
+    15% {
+      text-shadow: 
+        0 0 10px rgba(245, 243, 206, 0.9), 
+        0 0 20px rgba(255, 255, 128, 1), 
+        0 0 32px rgba(255, 255, 128, 1.2), 
+        0 0 48px rgba(255, 255, 128, 1.5);
+    }
+    25% {
+      text-shadow: 
+        0 0 6px rgba(245, 243, 206, 0.4), 
+        0 0 12px rgba(245, 243, 206, 0.6), 
+        0 0 18px rgba(255, 255, 128, 0.6);
+    }
+    40% {
+      text-shadow: 
+        0 0 10px rgba(245, 243, 206, 1), 
+        0 0 20px rgba(255, 255, 128, 1.2), 
+        0 0 40px rgba(255, 255, 128, 1.4), 
+        0 0 60px rgba(255, 255, 128, 1.6);
+    }
+    60% {
+      text-shadow: 
+        0 0 3px rgba(245, 243, 206, 0.2), 
+        0 0 6px rgba(245, 243, 206, 0.3), 
+        0 0 12px rgba(255, 255, 128, 0.4);
+    }
+    75% {
+      text-shadow: 
+        0 0 8px rgba(245, 243, 206, 0.7), 
+        0 0 16px rgba(255, 255, 128, 0.9), 
+        0 0 24px rgba(255, 255, 128, 1);
+    }
+    90%, 100% {
+      text-shadow: 
+        0 0 10px rgba(245, 243, 206, 1), 
+        0 0 20px rgba(255, 255, 128, 1.3), 
+        0 0 40px rgba(255, 255, 128, 1.6), 
+        0 0 60px rgba(255, 255, 128, 2);
+    }
+  }
+  
