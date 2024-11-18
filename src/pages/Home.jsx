@@ -24,7 +24,7 @@ const HomePage = () => {
             setShowGlitch((prev) => !prev);
         };
 
-        const interval = setInterval(toggleGlitch, Math.random() * 300 + 500); 
+        const interval = setInterval(toggleGlitch, Math.random() * 3000 + 2000); 
         return () => clearInterval(interval);
     }, []);
 
