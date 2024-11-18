@@ -42,6 +42,20 @@ const routes = createBrowserRouter([
     ],
   },
   {
+    path: "/daytest",
+    element: <Day2 />, // Layout untuk Day2
+    children: [
+      {
+        path: "dialogtest1",
+        element: <Dialog1 />, // Dialog 1 pada Day 2
+      },
+      {
+        path: "dialogtest2",
+        element: <Dialog2 />, // Dialog 2 pada Day 2
+      },
+    ],
+  },
+  {
     path: "/test",
     element: <PageDialog />
   }
