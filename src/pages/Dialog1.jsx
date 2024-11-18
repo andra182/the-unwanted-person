@@ -5,8 +5,14 @@ import { useGameContext } from "../context/GameContext";
 import StatusBar from "../components/StatusBar";
 
 const Dialog1 = () => {
-  const { updateKesenangan, updatePertemanan, updateFeedback, feedback } =
-    useGameContext();
+  const {
+    updateKesenangan,
+    updatePertemanan,
+    updateFeedback,
+    feedback,
+    kesenangan,
+    pertemanan,
+  } = useGameContext();
 
   // Menambahkan state untuk memilih opsi
   const [selectedOption, setSelectedOption] = useState(null);
@@ -36,7 +42,7 @@ const Dialog1 = () => {
 
   return (
     <div>
-      <StatusBar />
+      <StatusBar kesenangan={kesenangan} pertemanan={pertemanan} />
       <h2>Dialog 1</h2>
       <p>Aira: "Kamu siapa? Kenapa ingin duduk di sini?"</p>
       <div>

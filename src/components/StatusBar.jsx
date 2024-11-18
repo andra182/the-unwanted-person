@@ -1,18 +1,19 @@
-// src/pages/StatusBar.js
 import React from "react";
-import { useGameContext } from "../context/GameContext";
+import SemiCircleProgress from "./ProgressHalfCircle";
 
-const StatusBar = () => {
-  const { kesenangan, pertemanan } = useGameContext();
-
+const StatusBar = ({ kesenangan, pertemanan }) => {
   return (
-    <div>
-      <p>
-        <strong>Kesenangan:</strong> {kesenangan}
-      </p>
-      <p>
-        <strong>Pertemanan:</strong> {pertemanan}
-      </p>
+    <div className="flex justify-around space-x-4 my-10">
+      <SemiCircleProgress
+        title="Kesenangan"
+        value={kesenangan}
+        color="#FFC107"
+      />
+      <SemiCircleProgress
+        title="Pertemanan"
+        value={pertemanan}
+        color="#F44336"
+      />
     </div>
   );
 };
