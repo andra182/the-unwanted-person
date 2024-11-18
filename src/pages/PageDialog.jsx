@@ -68,6 +68,7 @@ const PageDialog = ({
               options={{
                 speed: 50,
                 waitUntilVisible: true,
+                startDelay: 3500,
               }}
             >
               {Dialog}

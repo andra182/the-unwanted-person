@@ -1,6 +1,6 @@
 // src/pages/Day1.js
 import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import OpeningStory from "./OpeningStory";
 
 const Day1 = () => {
@@ -12,6 +12,7 @@ const Day1 = () => {
 
   return (
     <div>
+      <Navigate to="/day1/dialog1" />
       {showOpening ? (
         <OpeningStory onComplete={handleOpeningComplete} />
       ) : (
