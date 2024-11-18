@@ -1,14 +1,22 @@
 // src/pages/Day1.js
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import StatusBar from "../components/StatusBar";
+import OpeningStory from "./OpeningStory";
 
 const Day1 = () => {
+  const [showOpening, setShowOpening] = useState(true);
+
+  const handleOpeningComplete = () => {
+    setShowOpening(false); // Menyembunyikan OpeningStory dan menampilkan Outlet
+  };
+
   return (
     <div>
-      <h1>Day 1</h1>
-      <p>Ini adalah hari pertama, dialog dimulai!</p>
-      <Outlet /> {/* Render dialog berdasarkan route */}
+      {showOpening ? (
+        <OpeningStory onComplete={handleOpeningComplete} />
+      ) : (
+        <Outlet /> // Render dialog berdasarkan route
+      )}
     </div>
   );
 };

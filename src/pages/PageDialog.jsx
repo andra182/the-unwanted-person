@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import TypeIt from "typeit-react";
 import "./style.css";
 
-const PageDialog = ({ NamaKarakter, Dialog, gambarkarakter, opsi, hari, background, alert }) => {
+const PageDialog = ({
+  NamaKarakter,
+  Dialog,
+  gambarkarakter,
+  opsi,
+  hari,
+  background,
+  alert,
+}) => {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertClass, setAlertClass] = useState("");
   const [alertType, setAlertType] = useState(false);
@@ -44,11 +52,12 @@ const PageDialog = ({ NamaKarakter, Dialog, gambarkarakter, opsi, hari, backgrou
             <p className="font-semibold">{NamaKarakter}</p>
           </div>
 
-          <p className="text-black text-xl font-medium">
+          <p className="text-black text-xl font-medium whitespace-pre-line">
             <TypeIt
               options={{
                 speed: 50,
                 waitUntilVisible: true,
+                startDelay: 3500,
               }}
             >
               {Dialog}
@@ -72,7 +81,9 @@ const PageDialog = ({ NamaKarakter, Dialog, gambarkarakter, opsi, hari, backgrou
 
         {alertVisible && (
           <div
-            className={`fixed top-20 left-5 ${alertType ? "bg-green-500" : "bg-red-500"} text-white p-4 rounded-lg transition-transform flex items-center gap-3 ${alertClass}`}
+            className={`fixed top-20 left-5 ${
+              alertType ? "bg-green-500" : "bg-red-500"
+            } text-white p-4 rounded-lg transition-transform flex items-center gap-3 ${alertClass}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

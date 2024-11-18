@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGameContext } from "../context/GameContext";
 import PageDialog from "./PageDialog";
+import SplashScreen from "../components/SplashScreen";
 
 const Dialog1 = () => {
   const {
@@ -32,23 +33,40 @@ const Dialog1 = () => {
     setSelectedOption("C");
     updateKesenangan(-5);
     updatePertemanan(1);
-    updateFeedback("Aira tetap skeptis, tetapi bersedia mendengar lebih banyak.");
+    updateFeedback(
+      "Aira tetap skeptis, tetapi bersedia mendengar lebih banyak."
+    );
   };
 
   return (
-    <PageDialog
-      NamaKarakter="Aira"
-      Dialog="Kamu siapa? Kenapa ingin duduk di sini?"
-      gambarkarakter="/Tocil.png"
-      opsi={[
-        { text: "Aku cuma merasa kamu butuh teman.", action: handleOptionA, type: true },
-        { text: "Gapapa aku coba mau ngobrol saja sama kamu.", action: handleOptionB, type: true },
-        { text: "Aku cuma ingin bicara, tidak ada maksud lain.", action: handleOptionC, type: false },
-      ]}
-      hari="Hari Pertama"
-      background="/bg.png"
-      alert={feedback}
-    />
+    <>
+      <SplashScreen day={"Hari Pertama"} />
+      <PageDialog
+        NamaKarakter="Aira"
+        Dialog={`Di taman sekolah ada seorang wanita yang sedang duduk merenungi sesuatu yang sepertinya berat.\nKamu siapa? Kenapa ingin duduk di sini?`}
+        gambarkarakter="/Tocil.png"
+        opsi={[
+          {
+            text: "Aku cuma merasa kamu butuh teman.",
+            action: handleOptionA,
+            type: true,
+          },
+          {
+            text: "Gapapa aku coba mau ngobrol saja sama kamu.",
+            action: handleOptionB,
+            type: true,
+          },
+          {
+            text: "Aku cuma ingin bicara, tidak ada maksud lain.",
+            action: handleOptionC,
+            type: false,
+          },
+        ]}
+        hari="Hari Pertama"
+        background="/bg.png"
+        alert={feedback}
+      />
+    </>
   );
 };
 
