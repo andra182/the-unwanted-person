@@ -9,30 +9,27 @@ const HomePage = () => {
     setIsPressed(true);
     setTimeout(() => {
       navigate("/day1");
-    }, 2000); // Menunggu animasi selesai sebelum berpindah route
+    }, 2000); 
   };
 
   return (
     <div
       className="relative bg-black h-screen w-screen overflow-hidden flex items-center justify-center"
-      onClick={handlePress} // Menambahkan event klik
+      onClick={handlePress} 
     >
-      {/* Background Image */}
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-90 filter grayscale"
-        style={{ backgroundImage: "url('/home-bg.jpg')" }} // Path ke gambar latar
+        style={{ backgroundImage: "url('/home-bg.jpg')" }} 
       />
 
-      {/* Overlay effect */}
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
 
-      {/* Main Content */}
       <div className="relative z-10 text-center select-none cursor-default text-white">
         <h1 className="text-9xl font-extrabold text-gray-200 glitch relative mb-6 font-sour-gummy">
           The Unwanted Person
         </h1>
         <p
-          className={`text-xl font-mono tracking-wide ${isPressed ? 'animate-pressed' : 'animate-pulse'}`} // Menambahkan animasi berkedip
+          className={`text-xl font-mono tracking-wide ${isPressed ? 'animate-pressed' : 'animate-pulse'}`}
         >
           PRESS START
         </p>
