@@ -3,7 +3,7 @@ import SemiCircleProgress from "./ProgressHalfCircle";
 
 const StatusBar = ({ kesenangan, pertemanan }) => {
   return (
-    <div className="flex justify-around space-x-4 my-10">
+    <div className="flex">
       <SemiCircleProgress
         title="Kesenangan"
         value={kesenangan}

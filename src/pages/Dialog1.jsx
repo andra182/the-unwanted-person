@@ -36,6 +36,7 @@ const Dialog1 = () => {
   };
 
   return (
+    <>
     <PageDialog
       NamaKarakter="Aira"
       Dialog="Kamu siapa? Kenapa ingin duduk di sini?"
@@ -49,6 +50,7 @@ const Dialog1 = () => {
       background="/bg.png"
       alert={feedback}
     />
+    </>
   );
 };
 

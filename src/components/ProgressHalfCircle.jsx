@@ -5,12 +5,12 @@ import "react-circular-progressbar/dist/styles.css";
 
 const SemiCircleProgress = ({ value, title, color }) => {
   return (
-    <div className="flex flex-col items-center">
-      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+    <div className="flex flex-col  pb-14 pt-5 px-5 bg-[#1E1E1E]/90">
+      <h3 className="text-lg font-semibold  text-white mb-2">{title}</h3>
       <div
         style={{
-          width: "150px", // Atur ukuran lingkaran
-          height: "75px", // Setengah tinggi dari lingkaran
+          width: "75px", // Atur ukuran lingkaran
+          height: "35px", // Setengah tinggi dari lingkaran
         }}
       >
         <CircularProgressbar
