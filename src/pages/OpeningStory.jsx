@@ -5,7 +5,7 @@ const OpeningStory = ({ onComplete }) => {
   const [currentParagraph, setCurrentParagraph] = useState(0);
 
   const paragraphs = [
-    "Di daerah di Malang tepatnya di daerah CemoroKandang, hiduplah seorang perempuan cantik bernama Risa.",
+    "Di daerah di Malang tepatnya di daerah Cemoro Kandang, hiduplah seorang perempuan cantik bernama Risa.",
     "Risa adalah seorang pelajar yang baru memasuki SMA di Sekolah Menengah Atas Negeri 1 CemoroKandang.",
     "Ia hidup sederhana bersama kedua orang tuanya. Ia merupakan seorang pindahan dari Kota Jakarta ke Malang, dikarenakan satu dan beberapa hal.",
     "Risa memasuki lingkungan baru di SMA dengan harapan bisa menjalani masa remaja yang penuh warna.",
@@ -44,7 +44,7 @@ const OpeningStory = ({ onComplete }) => {
           />
         ) : (
           <div className="text-center">
-            <p className="text-xl">Cerita selesai. Memulai dialog...</p>
+            <p className="text-xl">Cerita dimulai.</p>
           </div>
         )}
       </div>
