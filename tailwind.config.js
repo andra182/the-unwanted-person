@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       boxShadow: {
-        'multi-outline': '0 0 0 4px #FFEE00,  0 0 0 9px #000000',
+        "multi-outline": "0 0 0 4px #FFEE00,  0 0 0 9px #000000",
       },
     },
   },

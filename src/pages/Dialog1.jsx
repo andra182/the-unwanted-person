@@ -1,14 +1,17 @@
-// src/pages/Dialog1.js
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useGameContext } from "../context/GameContext";
-import StatusBar from "../components/StatusBar";
+import PageDialog from "./PageDialog";
 
 const Dialog1 = () => {
-  const { updateKesenangan, updatePertemanan, updateFeedback, feedback } =
-    useGameContext();
+  const {
+    updateKesenangan,
+    updatePertemanan,
+    updateFeedback,
+    feedback,
+    kesenangan,
+    pertemanan,
+  } = useGameContext();
 
-  // Menambahkan state untuk memilih opsi
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleOptionA = () => {
@@ -29,40 +32,23 @@ const Dialog1 = () => {
     setSelectedOption("C");
     updateKesenangan(-5);
     updatePertemanan(1);
-    updateFeedback(
-      "Aira tetap skeptis, tetapi bersedia mendengar lebih banyak."
-    );
+    updateFeedback("Aira tetap skeptis, tetapi bersedia mendengar lebih banyak.");
   };
 
   return (
-    <div>
-      <StatusBar />
-      <h2>Dialog 1</h2>
-      <p>Aira: "Kamu siapa? Kenapa ingin duduk di sini?"</p>
-      <div>
-        <button onClick={handleOptionA} disabled={selectedOption !== null}>
-          Opsi A: Aku cuma merasa kamu butuh teman.
-        </button>
-        <button onClick={handleOptionB} disabled={selectedOption !== null}>
-          Opsi B: Gapapa aku coba mau ngobrol saja sama kamu, Kenalin nama ku
-          Risa
-        </button>
-        <button onClick={handleOptionC} disabled={selectedOption !== null}>
-          Opsi C: Aku cuma ingin bicara, tidak ada maksud lain.
-        </button>
-      </div>
-
-      {/* Feedback */}
-      <p>
-        <strong>Feedback: </strong>
-        {feedback}
-      </p>
-
-      {/* Link menuju Dialog2 */}
-      <Link to="/day2/dialog2">
-        <button disabled={selectedOption === null}>Next Dialog</button>
-      </Link>
-    </div>
+    <PageDialog
+      NamaKarakter="Aira"
+      Dialog="Kamu siapa? Kenapa ingin duduk di sini?"
+      gambarkarakter="/Tocil.png"
+      opsi={[
+        { text: "Aku cuma merasa kamu butuh teman.", action: handleOptionA, type: true },
+        { text: "Gapapa aku coba mau ngobrol saja sama kamu.", action: handleOptionB, type: true },
+        { text: "Aku cuma ingin bicara, tidak ada maksud lain.", action: handleOptionC, type: false },
+      ]}
+      hari="Hari Pertama"
+      background="/bg.png"
+      alert={feedback}
+    />
   );
 };
 
