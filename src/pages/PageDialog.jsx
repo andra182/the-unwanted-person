@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TypeIt from "typeit-react";
 import "./style.css";
 import StatusBar from "../components/StatusBar";
@@ -12,28 +13,38 @@ const PageDialog = ({
   background,
   alert,
   status,
+  onCompleteNavigate,
 }) => {
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertClass, setAlertClass] = useState("");
   const [alertType, setAlertType] = useState(false);
   const [disabledOption, setDisabledOption] = useState(null);
 
-  const handleOptionClick = (option, index) => {
+  const navigate = useNavigate();
+
+  const handleOptionClick = async (option, index) => {
     setAlertVisible(true);
     setAlertType(option.type);
     setAlertClass("animate-slide-in");
 
-    option.action();
+    option.action(); // Memanggil fungsi aksi
 
     setDisabledOption(index);
 
-    setTimeout(() => {
-      setAlertClass("animate-slide-out");
+    // Menunggu animasi "slide-in" selesai
+    await new Promise((resolve) => {
       setTimeout(() => {
-        setAlertVisible(false);
-        setAlertClass("");
-      }, 500);
-    }, 3000);
+        setAlertClass("animate-slide-out"); // Memulai animasi "slide-out"
+        setTimeout(() => {
+          setAlertVisible(false); // Menyembunyikan alert
+          setAlertClass(""); // Reset animasi
+          resolve(); // Selesai menunggu
+        }, 500); // Durasi "slide-out"
+      }, 3000); // Durasi "slide-in"
+    });
+
+    // Setelah alert selesai, baru navigasi
+    navigate(onCompleteNavigate);
   };
 
   return (
