@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useGameContext } from "../../context/GameContext";
 import PageDialog from "../PageDialog";
 
-const Dialog2 = () => {
+const Dialog3 = () => {
   const {
     updateKesenangan,
     updatePertemanan,
@@ -16,52 +16,53 @@ const Dialog2 = () => {
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(8);
-    updatePertemanan(7);
-    updateFeedback("Aira sedikit terbuka. Hubungan berkembang positif.");
+    updateKesenangan(9);
+    updatePertemanan(8);
+    updateFeedback("Aira mulai melihat harapan kecil. Rasa percaya meningkat.");
   };
 
   const handleOptionB = () => {
     setSelectedOption("B");
-    updateKesenangan(5);
-    updatePertemanan(3);
-    updateFeedback(
-      "Aira tetap diam, tetapi tidak menjauh. Perkembangan lambat."
-    );
+    updateKesenangan(10);
+    updatePertemanan(9);
+    updateFeedback("Aira termakan ucapan Risa dan mulai membuka hatinya.");
   };
 
   const handleOptionC = () => {
     setSelectedOption("C");
-    updateKesenangan(6);
-    updatePertemanan(5);
-    updateFeedback("Aira masih terdiam tetapi hati Aira mulai terbuka.");
+    updateKesenangan(7);
+    updatePertemanan(6);
+    updateFeedback(
+      "Aira merasa bingung, tetapi tidak menjauh. Potensi masih ada."
+    );
   };
 
   return (
     <>
       <PageDialog
         NamaKarakter="Aira"
-        Dialog={`Sebentar, mengapa kau mau berbicara dengan ku?`}
-        gambarkarakter="/Tocil.png"
+        Dialog={`(menunjukkan rasa tidak percaya diri) “Tidak ada gunanya mencoba berteman.”
+`}
+        gambarkarakter={["/Tocil.png"]}
         opsi={[
           {
-            text: "Sepertinya kamu butuh orang untuk bercerita.",
+            text: "Kita semua layak mendapatkan teman.",
             action: handleOptionA,
             type: true, // Positif
           },
           {
-            text: "Gapapa Aku bingung aja kenapa ada orang yang sendiri sementara ini baru masuk sekolah.",
+            text: "Itu tidak benar, teman pasti akan membantu jika ada kesulitan.",
             action: handleOptionB,
-            type: true, // Netral
+            type: true, // Positif
           },
           {
-            text: "Gaada salahnya kan kalo kita berteman?",
+            text: "Tidak kok, berteman itu banyak manfaatnya!",
             action: handleOptionC,
-            type: true, // Positif
+            type: true, // Netral
           },
         ]}
         hari="Hari Pertama"
-        background="/DAY1/bgdialog1.jpg"
+        background="/bg.png"
         alert={feedback}
         status={{
           kesenangan,
@@ -73,4 +74,4 @@ const Dialog2 = () => {
   );
 };
 
-export default Dialog2;
+export default Dialog3;

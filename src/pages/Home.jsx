@@ -2,78 +2,83 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-    const [isPressed, setIsPressed] = useState(false);
-    const [backgroundPosition, setBackgroundPosition] = useState({ x: 50, y: 50 });
-    const [showGlitch, setShowGlitch] = useState(false);
-    const navigate = useNavigate();
+  const [isPressed, setIsPressed] = useState(false);
+  const [backgroundPosition, setBackgroundPosition] = useState({
+    x: 50,
+    y: 50,
+  });
+  const [showGlitch, setShowGlitch] = useState(false);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            const { innerWidth, innerHeight } = window;
-            const x = (e.clientX / innerWidth) * 100;
-            const y = (e.clientY / innerHeight) * 100;
-            setBackgroundPosition({ x, y });
-        };
-
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, []);
-
-    useEffect(() => {
-        const toggleGlitch = () => {
-            setShowGlitch((prev) => !prev);
-        };
-
-        const interval = setInterval(toggleGlitch, Math.random() * 3000 + 2000); 
-        return () => clearInterval(interval);
-    }, []);
-
-    const handlePress = () => {
-        setIsPressed(true);
-        setShowGlitch(true); 
-        setTimeout(() => {
-            navigate("/day1");
-        }, 3000); 
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { innerWidth, innerHeight } = window;
+      const x = (e.clientX / innerWidth) * 100;
+      const y = (e.clientY / innerHeight) * 100;
+      setBackgroundPosition({ x, y });
     };
 
-    return (
-        <div
-            className="relative bg-black h-screen w-screen overflow-hidden flex items-center justify-center"
-            onClick={handlePress}
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const toggleGlitch = () => {
+      setShowGlitch((prev) => !prev);
+    };
+
+    const interval = setInterval(toggleGlitch, Math.random() * 3000 + 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handlePress = () => {
+    setIsPressed(true);
+    setShowGlitch(true);
+    setTimeout(() => {
+      navigate("/day1/dialog1");
+    }, 3000);
+  };
+
+  return (
+    <div
+      className="relative bg-black h-screen w-screen overflow-hidden flex items-center justify-center"
+      onClick={handlePress}
+    >
+      <div
+        className="absolute top-0 left-0 w-screen h-screen bg-no-repeat opacity-90 rounded-[2%] filter grayscale"
+        style={{
+          backgroundImage: "url('/home-bg.jpg')",
+          backgroundPosition: `${backgroundPosition.x}% ${backgroundPosition.y}%`,
+          backgroundSize: "102%",
+          transition: "background-position 0.1s ease-out",
+        }}
+      />
+
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
+
+      {showGlitch && (
+        <div className="absolute top-0 left-0 w-full h-full glitch-overlay pointer-events-none"></div>
+      )}
+
+      <div className="relative z-10 text-center select-none cursor-default text-white">
+        <h1 className="text-9xl font-medium text-gray-200 glitch relative mb-6 font-sour-gummy">
+          The Unwanted Person
+        </h1>
+        <p
+          className={`text-xl font-mono tracking-wide ${
+            isPressed ? "animate-pressed" : "animate-pulse"
+          }`}
         >
-            <div
-                className="absolute top-0 left-0 w-screen h-screen bg-no-repeat opacity-90 rounded-[2%] filter grayscale"
-                style={{
-                    backgroundImage: "url('/home-bg.jpg')",
-                    backgroundPosition: `${backgroundPosition.x}% ${backgroundPosition.y}%`,
-                    backgroundSize: "102%",
-                    transition: "background-position 0.1s ease-out",
-                }}
-            />
+          PRESS START
+        </p>
+      </div>
 
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50" />
+      <div
+        className="absolute left-5 bottom-5 w-24 h-24 bg-cover bg-center"
+        style={{ backgroundImage: "url(/logo.png)" }}
+      ></div>
 
-            {showGlitch && (
-                <div className="absolute top-0 left-0 w-full h-full glitch-overlay pointer-events-none"></div>
-            )}
-
-            <div className="relative z-10 text-center select-none cursor-default text-white">
-                <h1 className="text-9xl font-medium text-gray-200 glitch relative mb-6 font-sour-gummy">
-                    The Unwanted Person
-                </h1>
-                <p
-                    className={`text-xl font-mono tracking-wide ${isPressed ? "animate-pressed" : "animate-pulse"}`}
-                >
-                    PRESS START
-                </p>
-            </div>
-
-            <div
-                className="absolute left-5 bottom-5 w-24 h-24 bg-cover bg-center"
-                style={{ backgroundImage: "url(/logo.png)" }}
-            ></div>
-
-            <style>{`
+      <style>{`
                 .glitch {
                     position: relative;
                     color: white;
@@ -160,8 +165,8 @@ const HomePage = () => {
                     }
                 }
             `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default HomePage;

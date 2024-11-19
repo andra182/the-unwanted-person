@@ -58,23 +58,23 @@ const Dialog1 = () => {
           <SplashScreen day={"Hari Pertama"} />
           <PageDialog
             NamaKarakter="Aira"
-            Dialog={`Di taman sekolah ada seorang wanita yang sedang duduk merenungi sesuatu yang sepertinya berat.\nAira: “Kamu siapa? Kenapa ingin duduk di sini?”`}
+            Dialog={`Kamu siapa? Kenapa ingin duduk di sini?`}
             gambarkarakter={["/DAY1/airadialog1.png"]}
             opsi={[
               {
-                text: "Aku cuma merasa kamu butuh teman.",
+                text: "Aku cuma merasa kamu butuh teman. Kenalin, nama aku Risa.",
                 action: handleOptionA,
                 type: true,
               },
               {
-                text: "Gapapa aku coba mau ngobrol saja sama kamu.",
+                text: "Gapapa aku coba mau ngobrol saja sama kamu. Nama aku Risa.",
                 action: handleOptionB,
                 type: true,
               },
               {
-                text: "Aku cuma ingin bicara, tidak ada maksud lain.",
+                text: "Aku cuma ingin bicara, tidak ada maksud lain. Kenalin ya, aku Risa.",
                 action: handleOptionC,
-                type: false,
+                type: true,
               },
             ]}
             hari="Hari Pertama"
