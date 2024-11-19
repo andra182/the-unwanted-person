@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Credit = () => {
@@ -8,6 +8,20 @@ const Credit = () => {
     });
     const [showGlitch, setShowGlitch] = useState(false);
     const navigate = useNavigate();
+
+    const bgMusicRef = useRef(null);
+
+    useEffect(() => {
+        if (bgMusicRef.current) {
+            bgMusicRef.current.volume = 0.5;
+            bgMusicRef.current.loop = true; 
+            bgMusicRef.current.play();
+        }
+
+        return () => {
+            if (bgMusicRef.current) bgMusicRef.current.pause();
+        };
+    }, []);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -33,8 +47,9 @@ const Credit = () => {
 
     return (
         <div className="relative bg-black h-screen w-screen overflow-hidden flex items-center justify-center">
+            <audio ref={bgMusicRef} src="./audio/memories-sunbeam.mp3" />
             <div
-                className="absolute top-0 left-0 w-screen h-screen bg-no-repeat opacity-90 rounded-[2%] filter grayscale"
+                className="absolute top-0 left-0 w-screen h-screen bg-no-repeat opacity-90 rounded-[2%]"
                 style={{
                     backgroundImage: "url('/home-bg.jpg')",
                     backgroundPosition: `${backgroundPosition.x}% ${backgroundPosition.y}%`,

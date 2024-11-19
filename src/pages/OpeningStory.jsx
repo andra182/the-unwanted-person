@@ -83,7 +83,8 @@ const OpeningStory = ({ onComplete }) => {
         )}
       </div>
       <button onClick={handleSkip} className="mt-4 font-semibold underline-offset-2 hover:underline text-white rounded fixed bottom-10 right-10">
-        Skip
+       Click
+        Enter To Skip
       </button>
     </div>
   );
