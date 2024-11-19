@@ -142,3 +142,27 @@
     animation: expandWidth 0.5s ease-out forwards;
   }
   
+  @keyframes growWidth {
+    0% {
+      width: 0;
+      opacity: 0;
+      overflow: hidden; /* Konten tidak terlihat */
+    }
+    100% {
+      width: fit-content;
+      opacity: 1;
+    }
+  }
+  
+  .Component-1 {
+    animation: growWidth 1s ease-out forwards; /* Menjalankan animasi */
+    opacity: 0; /* Awalnya disembunyikan */
+    position: relative; /* Untuk menghindari konflik dengan posisi elemen lainnya */
+    max-width: 90%; /* Batas lebar untuk mencegah overflow */
+  }
+  
+  .Component-1.show {
+    opacity: 1; /* Muncul setelah animasi selesai */
+  }
+  
+  
