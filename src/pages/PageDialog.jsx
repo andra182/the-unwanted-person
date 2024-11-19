@@ -60,21 +60,20 @@ const PageDialog = ({
                 className={`relative ${gambarkarakter && gambarkarakter.length > 0
                     ? "mt-20"
                     : "flex items-center justify-center min-h-screen"
-                    }`}
+                }`}
             >
                 <div className="h-fit relative flex justify-evenly items-center">
-                    {gambarkarakter && gambarkarakter.length > 0 && (
-                        <img className="w-96" src={gambarkarakter} alt="" />
-                    )}
+                    {Array.isArray(gambarkarakter) && gambarkarakter.map((src, index) => (
+                        <img className="w-96" key={index} src={src} alt={`Gambar ${index + 1}`} />
+                    ))}
                 </div>
 
                 <div
-                    className={` relative bg-[#ffe680] shadow-multi-outline p-5 ${gambarkarakter && gambarkarakter.length > 0
+                    className={`relative bg-[#ffe680] shadow-multi-outline p-5 ${gambarkarakter && gambarkarakter.length > 0
                         ? "mx-36 rounded-2xl"
                         : "rounded-xl"
-                        }`}
+                    }`}
                 >
-
                     {NamaKarakter && (
                         <div className="top-[-4vh] border-4 border-black absolute rounded-xl px-5 py-1 bg-[#fffaad]">
                             <p className="font-semibold">{NamaKarakter}</p>
@@ -97,7 +96,6 @@ const PageDialog = ({
                         >
                             {Dialog}
                         </TypeIt>
-
                     </p>
 
                     <div className="relative z-10 flex gap-10 mt-10">
