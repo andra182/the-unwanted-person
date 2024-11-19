@@ -50,17 +50,17 @@ const Dialog2 = () => {
             text: "Sepertinya kamu butuh orang untuk bercerita.",
             action: handleOptionA,
             type: "negative",
-            message: "Developer Ganteng"
+            message: "Developer Ganteng",
           },
           {
             text: "Gapapa Aku bingung aja kenapa ada orang yang sendiri sementara ini baru masuk sekolah.",
             action: handleOptionB,
-            type: true, // Netral
+            type: "neutral", // Netral
           },
           {
             text: "Gaada salahnya kan kalo kita berteman?",
             action: handleOptionC,
-            type: true, // Positif
+            type: "positive", // Positif
           },
         ]}
         hari="Hari Pertama"

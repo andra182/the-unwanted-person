@@ -47,17 +47,17 @@ const Dialog3 = () => {
           {
             text: "Kita semua layak mendapatkan teman.",
             action: handleOptionA,
-            type: true, // Positif
+            type: "positive", // Positif
           },
           {
             text: "Itu tidak benar, teman pasti akan membantu jika ada kesulitan.",
             action: handleOptionB,
-            type: true, // Positif
+            type: "positive", // Positif
           },
           {
             text: "Tidak kok, berteman itu banyak manfaatnya!",
             action: handleOptionC,
-            type: true, // Netral
+            type: "neutral", // Netral
           },
         ]}
         hari="Hari Pertama"
