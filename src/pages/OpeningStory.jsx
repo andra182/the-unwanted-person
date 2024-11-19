@@ -14,6 +14,20 @@ const OpeningStory = ({ onComplete }) => {
   ];
 
   useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter") {
+        handleSkip(); // Panggil fungsi handleSkip saat Enter ditekan
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
+
+  useEffect(() => {
     if (currentParagraph >= paragraphs.length) {
       const timer = setTimeout(() => {
         onComplete(); // Memanggil callback untuk menyelesaikan OpeningStory
@@ -21,6 +35,10 @@ const OpeningStory = ({ onComplete }) => {
       return () => clearTimeout(timer);
     }
   }, [currentParagraph, paragraphs.length, onComplete]);
+
+  const handleSkip = () => {
+    setCurrentParagraph(paragraphs.length); // Set ke panjang paragraf untuk menyelesaikan cerita
+  };
 
   return (
     <div className="bg-black text-white h-screen flex flex-col justify-center items-center">
@@ -48,6 +66,9 @@ const OpeningStory = ({ onComplete }) => {
           </div>
         )}
       </div>
+      <button onClick={handleSkip} className="mt-4 font-semibold underline-offset-2 hover:underline text-white rounded fixed bottom-10 right-10">
+        Skip
+      </button>
     </div>
   );
 };

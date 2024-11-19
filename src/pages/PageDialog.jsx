@@ -17,6 +17,7 @@ const PageDialog = ({
   const [alertClass, setAlertClass] = useState("");
   const [alertType, setAlertType] = useState(false);
   const [disabledOption, setDisabledOption] = useState(null);
+  const [showButtons, setShowButtons] = useState(false);
 
   const handleOptionClick = (option, index) => {
     setAlertVisible(true);
@@ -37,15 +38,15 @@ const PageDialog = ({
   };
 
   return (
-    <div className="bg-black">
+    <div className="">
       <img
         src={background}
         alt=""
-        className="absolute opacity-80 w-screen h-screen overflow-y-hidden"
+        className="h-full w-screen fixed opacity-80"
       />
       <div className="relative z-10 flex justify-between">
-        <p className="p-10 relative text-xl font-bold text-white">{hari}</p>
-        <div className="flex relative z-10">
+        <p className="p-10 fixed text-xl font-bold text-white">{hari}</p>
+        <div className="flex right-0 z-10 fixed">
           {/* Menggunakan nilai status terkini */}
           <StatusBar
             kesenangan={status.kesenangan}
@@ -53,12 +54,13 @@ const PageDialog = ({
           />
         </div>
       </div>
-      <div className="relative bottom-14">
-        <div className="bottom-20 h-screen relative flex justify-center items-center">
+      <div className="relative mt-20">
+        <div className="h-fit relative flex justify-evenly items-center">
+            {/* <p className="text-2xl font-semibold text-white p-2 bg-black rounded-2xl">Memek</p> */}
           <img className="w-80" src={gambarkarakter} alt="" />
         </div>
 
-        <div className="relative bottom-56 bg-[#ffe680] shadow-multi-outline p-5 mx-36 rounded-2xl">
+        <div className="relative bg-[#ffe680] shadow-multi-outline p-5 mx-36 rounded-2xl">
           <div className="top-[-4vh] border-4 border-black absolute rounded-xl px-5 py-1 bg-[#fffaad]">
             <p className="font-semibold">{NamaKarakter}</p>
           </div>
@@ -69,6 +71,7 @@ const PageDialog = ({
                 speed: 50,
                 waitUntilVisible: true,
                 startDelay: 3500,
+                afterComplete: () => setShowButtons(true),
               }}
             >
               {Dialog}
@@ -76,10 +79,10 @@ const PageDialog = ({
           </p>
 
           <div className="relative z-10 flex gap-10 mt-10">
-            {opsi.map((option, index) => (
+            {showButtons && opsi.map((option, index) => (
               <button
                 key={index}
-                className="button-56"
+                className={`button-56 button-fade-in ${showButtons ? 'show' : ''}`}
                 role="button"
                 onClick={() => handleOptionClick(option, index)}
                 disabled={disabledOption !== null && disabledOption !== index}
