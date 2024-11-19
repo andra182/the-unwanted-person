@@ -80,7 +80,10 @@ const Dialog2 = () => {
           Dialog={dialog}
           NamaKarakter={"Risa"}
           hari="Hari Kedua"
-          gambarkarakter={["/DAY2/risadialog2-1.png"]}
+          gambarkarakter={[
+            "/DAY2/risadialog2-1.png",
+            "/DAY2/airadialog2-1.png",
+          ]}
           background="/DAY2/bgdialog2.jpg"
           status={{
             kesenangan,
@@ -100,7 +103,7 @@ const Dialog2 = () => {
       <PageDialog
         NamaKarakter="Aira"
         Dialog={dialog}
-        gambarkarakter={["/DAY2/airadialog2-2.png"]}
+        gambarkarakter={["/DAY2/risadialog2-1.png", "/DAY2/airadialog2-2.png"]}
         opsi={[
           {
             text: "Aku akan membantumu, apa pun yang terjadi.",

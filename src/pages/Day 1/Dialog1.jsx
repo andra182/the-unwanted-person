@@ -85,17 +85,17 @@ const Dialog1 = () => {
                 {
                   text: "Aku cuma merasa kamu butuh teman. Kenalin, nama aku Risa.",
                   action: handleOptionA,
-                  type: true,
+                  type: "positive",
                 },
                 {
                   text: "Gapapa aku coba mau ngobrol saja sama kamu. Nama aku Risa.",
                   action: handleOptionB,
-                  type: true,
+                  type: "positive",
                 },
                 {
                   text: "Aku cuma ingin bicara, tidak ada maksud lain. Kenalin ya, aku Risa.",
                   action: handleOptionC,
-                  type: false,
+                  type: "negative",
                 },
               ]}
               hari="Hari Pertama"
