@@ -14,6 +14,7 @@ const PageDialog = ({
     background,
     status,
     onCompleteNavigate,
+    DelayTyping,
     onComplete,
 }) => {
     const [alertVisible, setAlertVisible] = useState(false);
@@ -21,8 +22,15 @@ const PageDialog = ({
     const [alertType, setAlertType] = useState("");
     const [disabledOption, setDisabledOption] = useState(null);
     const [showButtons, setShowButtons] = useState(false);
+    const [animateClass, setAnimateClass] = useState(""); // State untuk animasi
 
     const navigate = useNavigate();
+
+    // Trigger animasi saat komponen dimuat
+    useEffect(() => {
+        const timer = setTimeout(() => setAnimateClass("animate-grow-center"), 100);
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleOptionClick = async (option, index) => {
         setAlertVisible(true);
@@ -68,11 +76,12 @@ const PageDialog = ({
                     ))}
                 </div>
 
+                {/* Animated Component */}
                 <div
-                    className={`relative bg-[#ffe680] shadow-multi-outline p-5 ${gambarkarakter && gambarkarakter.length > 0
+                    className={`Component-1 relative bg-[#ffe680] shadow-multi-outline p-5 ${gambarkarakter && gambarkarakter.length > 0
                         ? "mx-36 rounded-2xl"
                         : "rounded-xl"
-                    }`}
+                    } ${animateClass}`} // Terapkan kelas animasi
                 >
                     {NamaKarakter && (
                         <div className="top-[-4vh] border-4 border-black absolute rounded-xl px-5 py-1 bg-[#fffaad]">
@@ -85,7 +94,7 @@ const PageDialog = ({
                             options={{
                                 speed: 50,
                                 waitUntilVisible: true,
-                                startDelay: 1000,
+                                startDelay: DelayTyping,
                                 afterComplete: () => {
                                     setShowButtons(true);
                                     if (onComplete) {

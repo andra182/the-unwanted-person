@@ -142,27 +142,20 @@
     animation: expandWidth 0.5s ease-out forwards;
   }
   
-  @keyframes growWidth {
+  @keyframes growFromCenter {
     0% {
-      width: 0;
-      opacity: 0;
-      overflow: hidden; /* Konten tidak terlihat */
+      transform: scaleX(0); /* Elemen mulai dari lebar 0 */
+      opacity: 0;          /* Elemen tidak terlihat di awal */
     }
     100% {
-      width: fit-content;
-      opacity: 1;
+      transform: scaleX(1); /* Elemen mencapai ukuran penuh */
+      opacity: 1;           /* Elemen terlihat sepenuhnya */
     }
   }
   
-  .Component-1 {
-    animation: growWidth 1s ease-out forwards; /* Menjalankan animasi */
-    opacity: 0; /* Awalnya disembunyikan */
-    position: relative; /* Untuk menghindari konflik dengan posisi elemen lainnya */
-    max-width: 90%; /* Batas lebar untuk mencegah overflow */
-  }
-  
-  .Component-1.show {
-    opacity: 1; /* Muncul setelah animasi selesai */
+  .animate-grow-center {
+    animation: growFromCenter 0.7s ease-out forwards;
+    transform-origin: center; /* Pastikan elemen memanjang dari tengah */
   }
   
   

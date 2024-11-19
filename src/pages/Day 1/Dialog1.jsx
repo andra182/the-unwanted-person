@@ -68,12 +68,14 @@ const Dialog1 = () => {
             <PageDialog
               key={dialog}
               Dialog={dialog}
+              
               hari="Hari Pertama"
               background="/DAY1/bgdialog1.jpg"
               status={{
                 kesenangan,
                 pertemanan,
               }}
+              
               onComplete={() => whenComplete()}
             />
           ) : (
