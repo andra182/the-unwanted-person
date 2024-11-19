@@ -74,6 +74,39 @@
     }
 }
 
+.dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Pastikan selalu penuh tinggi viewport */
+    overflow: hidden; /* Mencegah elemen keluar viewport */
+    padding: 0 1rem; /* Tambahkan padding untuk margin X seimbang */
+    box-sizing: border-box; /* Pastikan padding dihitung */
+  }
+  
+  .dialog-box {
+    background-color: #ffe680;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Bayangan untuk efek estetis */
+    border-radius: 1rem; /* Membuat sudut membulat */
+    padding: 1.5rem;
+    max-width: 90%; /* Membatasi lebar maksimum */
+    width: 100%; /* Lebar penuh hingga max-width tercapai */
+    overflow: hidden; /* Mencegah konten overflow */
+    animation: dialogEnter 0.4s ease-out forwards;
+  }
+  
+  @keyframes dialogEnter {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  
 .animate-slide-in {
     animation: slide-in 0.5s forwards;
 }
@@ -81,4 +114,31 @@
 .animate-slide-out {
     animation: slide-out 0.5s forwards;
 }
-
+@keyframes dialogEnter {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes expandWidth {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+  .dialog-enter {
+    animation: dialogEnter 0.4s ease-out forwards;
+  }
+  
+  .dialog-expand {
+    animation: expandWidth 0.5s ease-out forwards;
+  }
+  
