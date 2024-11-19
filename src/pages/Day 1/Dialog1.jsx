@@ -34,6 +34,15 @@ const Dialog1 = () => {
     console.log("Dialog updated:", `Kamu siapa? Kenapa ingin duduk di sini?`);
   };
 
+  const paragraphs = [
+    "Di daerah di Malang tepatnya di daerah Cemoro Kandang, hiduplah seorang perempuan cantik bernama Risa.",
+    "Risa adalah seorang pelajar yang baru memasuki SMA di Sekolah Menengah Atas Negeri 1 CemoroKandang.",
+    "Ia hidup sederhana bersama kedua orang tuanya. Ia merupakan seorang pindahan dari Kota Jakarta ke Malang, dikarenakan satu dan beberapa hal.",
+    "Risa memasuki lingkungan baru di SMA dengan harapan bisa menjalani masa remaja yang penuh warna.",
+    "Namun, sejak hari pertama, Risa merasa ada atmosfer yang aneh. Dia melihat seorang gadis duduk sendirian di pojok taman sekolah, wajahnya murung dan pandangannya kosong.",
+    "Gadis itu bernama Aira. Risa merasa terpanggil untuk mengenalnya.",
+  ];
+
   const handleOptionA = () => {
     setSelectedOption("A");
     updateKesenangan(10);
@@ -60,7 +69,10 @@ const Dialog1 = () => {
   return (
     <>
       {showOpening ? (
-        <OpeningStory onComplete={handleOpeningComplete} />
+        <OpeningStory
+          onComplete={handleOpeningComplete}
+          paragraphs={paragraphs}
+        />
       ) : (
         <div>
           <SplashScreen day={"Hari Pertama"} />

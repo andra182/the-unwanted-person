@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from "react";
 import TypeIt from "typeit-react";
 
-const OpeningStory = ({ onComplete }) => {
+const OpeningStory = ({ onComplete, paragraphs }) => {
   const [currentParagraph, setCurrentParagraph] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
-  const [isComplete, setIsComplete] = useState(false); 
-
-  const paragraphs = [
-    "Di daerah di Malang tepatnya di daerah Cemoro Kandang, hiduplah seorang perempuan cantik bernama Risa.",
-    "Risa adalah seorang pelajar yang baru memasuki SMA di Sekolah Menengah Atas Negeri 1 CemoroKandang.",
-    "Ia hidup sederhana bersama kedua orang tuanya. Ia merupakan seorang pindahan dari Kota Jakarta ke Malang, dikarenakan satu dan beberapa hal.",
-    "Risa memasuki lingkungan baru di SMA dengan harapan bisa menjalani masa remaja yang penuh warna.",
-    "Namun, sejak hari pertama, Risa merasa ada atmosfer yang aneh. Dia melihat seorang gadis duduk sendirian di pojok taman sekolah, wajahnya murung dan pandangannya kosong.",
-    "Gadis itu bernama Aira. Risa merasa terpanggil untuk mengenalnya.",
-  ];
+  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     const handleKeyPress = (event) => {
@@ -36,24 +27,24 @@ const OpeningStory = ({ onComplete }) => {
   useEffect(() => {
     if (currentParagraph >= paragraphs.length) {
       const timer = setTimeout(() => {
-        onComplete(); 
+        onComplete();
       }, 3000);
       return () => clearTimeout(timer);
     }
   }, [currentParagraph, paragraphs.length, onComplete]);
 
   const completeText = () => {
-    setIsTyping(false); 
-    setIsComplete(true); 
+    setIsTyping(false);
+    setIsComplete(true);
   };
 
   const handleSkip = () => {
     if (currentParagraph < paragraphs.length - 1) {
-      setCurrentParagraph((prev) => prev + 1); 
-      setIsTyping(true); 
-      setIsComplete(false); 
+      setCurrentParagraph((prev) => prev + 1);
+      setIsTyping(true);
+      setIsComplete(false);
     } else {
-      onComplete(); 
+      onComplete();
     }
   };
 
@@ -73,15 +64,15 @@ const OpeningStory = ({ onComplete }) => {
                 }}
                 getAfterInit={(instance) => {
                   instance
-                    .type(paragraphs[currentParagraph]) 
-                    .pause(1500) 
-                    .exec(() => setIsComplete(true)) 
+                    .type(paragraphs[currentParagraph])
+                    .pause(1500)
+                    .exec(() => setIsComplete(true))
                     .go();
                   return instance;
                 }}
               />
             ) : (
-              <p>{paragraphs[currentParagraph]}</p> 
+              <p>{paragraphs[currentParagraph]}</p>
             )}
           </div>
         ) : (
@@ -90,7 +81,10 @@ const OpeningStory = ({ onComplete }) => {
           </div>
         )}
       </div>
-      <button onClick={handleSkip} className="mt-4 font-semibold underline-offset-2 hover:underline text-white rounded fixed bottom-10 right-10">
+      <button
+        onClick={handleSkip}
+        className="mt-4 font-semibold underline-offset-2 hover:underline text-white rounded fixed bottom-10 right-10"
+      >
         Click Enter To Skip
       </button>
     </div>

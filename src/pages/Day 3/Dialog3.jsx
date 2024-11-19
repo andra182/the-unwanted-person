@@ -96,7 +96,7 @@ const Dialog3 = () => {
               type: false, // Negatif
             },
           ]}
-          hari="Hari Kedua"
+          hari="Hari Pertama"
           background="/DAY1/bgdialog1.jpg"
           alert={feedback}
           status={{
