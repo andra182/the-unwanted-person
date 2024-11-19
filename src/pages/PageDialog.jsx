@@ -57,7 +57,7 @@ const PageDialog = ({
       />
       <div className="relative z-10 flex justify-between">
         <p className="p-10 fixed text-xl font-bold text-white">{hari}</p>
-        <div className="flex right-0 z-10 fixed">
+        <div className="flex right-0 z-10 fixed m-10">
           {/* Menggunakan nilai status terkini */}
           <StatusBar
             kesenangan={status.kesenangan}
@@ -68,8 +68,8 @@ const PageDialog = ({
       <div className="relative mt-20">
         <div className="h-fit relative flex justify-evenly items-center">
             {/* <p className="text-2xl font-semibold text-white p-2 bg-black rounded-2xl">Memek</p> */}
-          <img className="w-80" src={gambarkarakter} alt="" />
-        </div>
+            <img className="w-96" src={gambarkarakter} alt="" />
+            </div>
 
         <div className="relative bg-[#ffe680] shadow-multi-outline p-5 mx-36 rounded-2xl">
           <div className="top-[-4vh] border-4 border-black absolute rounded-xl px-5 py-1 bg-[#fffaad]">
@@ -81,7 +81,7 @@ const PageDialog = ({
               options={{
                 speed: 50,
                 waitUntilVisible: true,
-                startDelay: 3500,
+                startDelay: 4500,
                 afterComplete: () => setShowButtons(true),
               }}
             >

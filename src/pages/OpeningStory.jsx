@@ -3,6 +3,7 @@ import TypeIt from "typeit-react";
 
 const OpeningStory = ({ onComplete }) => {
   const [currentParagraph, setCurrentParagraph] = useState(0);
+  const [isComplete, setIsComplete] = useState(false);
 
   const paragraphs = [
     "Di daerah di Malang tepatnya di daerah Cemoro Kandang, hiduplah seorang perempuan cantik bernama Risa.",
@@ -16,7 +17,11 @@ const OpeningStory = ({ onComplete }) => {
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === "Enter") {
-        handleSkip(); // Panggil fungsi handleSkip saat Enter ditekan
+        if (isComplete) {
+          handleSkip(); // Panggil fungsi handleSkip jika teks sudah lengkap
+        } else {
+          completeText(); // Lengkapi teks jika belum lengkap
+        }
       }
     };
 
@@ -25,7 +30,7 @@ const OpeningStory = ({ onComplete }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyPress);
     };
-  }, []);
+  }, [isComplete]);
 
   useEffect(() => {
     if (currentParagraph >= paragraphs.length) {
@@ -36,12 +41,22 @@ const OpeningStory = ({ onComplete }) => {
     }
   }, [currentParagraph, paragraphs.length, onComplete]);
 
+  const completeText = () => {
+    setIsComplete(true); // Tandai teks sebagai lengkap
+    setCurrentParagraph((prev) => prev + 1); // Lompat ke paragraf berikutnya
+  };
+
   const handleSkip = () => {
-    setCurrentParagraph(paragraphs.length); // Set ke panjang paragraf untuk menyelesaikan cerita
+    if (currentParagraph < paragraphs.length - 1) {
+      setCurrentParagraph((prev) => prev + 1); // Lompat ke paragraf berikutnya
+      setIsComplete(false); // Reset status lengkap
+    } else {
+      onComplete(); // Jika sudah di paragraf terakhir, panggil onComplete
+    }
   };
 
   return (
-    <div className="bg-black text-white h-screen flex flex-col justify-center items-center">
+    <div className="bg-black text-white h-screen flex flex-col justify-center items-center overflow-y-hidden">
       <div className="w-3/4 p-4 text-lg">
         {currentParagraph < paragraphs.length ? (
           <TypeIt
@@ -50,12 +65,13 @@ const OpeningStory = ({ onComplete }) => {
               speed: 50,
               cursor: true,
               waitUntilVisible: true,
+              afterComplete: () => setIsComplete(true), // Tandai teks sebagai lengkap setelah selesai
             }}
             getAfterInit={(instance) => {
               instance
                 .type(paragraphs[currentParagraph])
                 .pause(1500)
-                .exec(() => setCurrentParagraph((prev) => prev + 1))
+                .exec(() => setIsComplete(true)) // Tandai teks sebagai lengkap setelah jeda
                 .go();
               return instance;
             }}

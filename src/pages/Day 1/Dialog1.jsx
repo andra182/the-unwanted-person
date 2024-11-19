@@ -59,7 +59,7 @@ const Dialog1 = () => {
           <PageDialog
             NamaKarakter="Aira"
             Dialog={`Di taman sekolah ada seorang wanita yang sedang duduk merenungi sesuatu yang sepertinya berat.\nAira: “Kamu siapa? Kenapa ingin duduk di sini?”`}
-            gambarkarakter="/Tocil.png"
+            gambarkarakter={["/DAY1/airadialog1.png"]}
             opsi={[
               {
                 text: "Aku cuma merasa kamu butuh teman.",
@@ -78,7 +78,7 @@ const Dialog1 = () => {
               },
             ]}
             hari="Hari Pertama"
-            background="/bg.png"
+            background="/DAY1/bgdialog1.jpg"
             alert={feedback}
             status={{
               kesenangan,
