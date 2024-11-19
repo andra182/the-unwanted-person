@@ -105,17 +105,17 @@ const Dialog2 = () => {
           {
             text: "Aku akan membantumu, apa pun yang terjadi.",
             action: handleOptionA,
-            type: true, // Positif
+            type: "positive", // Positif
           },
           {
             text: "Yang sabar ya Ra, inget kalau tuhan gabakal ngasih ujian yang diluar batas kemampuan hambanya. Ada aku kok disini kamu santai aja.",
             action: handleOptionB,
-            type: true, // Positif
+            type: "positive", // Positif
           },
           {
             text: "Oh pantes kamu jadi kayak gini ya.",
             action: handleOptionC,
-            type: false, // Negatif
+            type: "negative", // Negatif
           },
         ]}
         hari="Hari Kedua"

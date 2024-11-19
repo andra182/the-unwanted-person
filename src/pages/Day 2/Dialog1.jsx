@@ -85,17 +85,17 @@ const Dialog1 = () => {
               {
                 text: "Berhenti bersikap seperti itu! Tidak ada yang pantas diperlakukan begini.",
                 action: handleOptionA,
-                type: true, // Positif
+                type: "positive", // Positif
               },
               {
                 text: "Tolong berhenti, ini tidak benar.",
                 action: handleOptionB,
-                type: true, // Positif
+                type: "positive", // Positif
               },
               {
                 text: "Abaikan mereka, Aira.",
                 action: handleOptionC,
-                type: false, // Negatif
+                type: "negative", // Negatif
               },
             ]}
             hari="Hari Kedua"
@@ -105,7 +105,7 @@ const Dialog1 = () => {
               kesenangan,
               pertemanan,
             }}
-            onCompleteNavigate="/day1/dialog2"
+            onCompleteNavigate="/day2/dialog2"
           />
         )}
       </div>
