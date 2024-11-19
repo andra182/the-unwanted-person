@@ -95,12 +95,12 @@ const Dialog1 = () => {
                 {
                   text: "Aku cuma ingin bicara, tidak ada maksud lain. Kenalin ya, aku Risa.",
                   action: handleOptionC,
-                  type: true,
+                  type: false,
                 },
               ]}
               hari="Hari Pertama"
               background="/DAY1/bgdialog1.jpg"
-              alert={feedback}
+              // alert={feedback}
               status={{
                 kesenangan,
                 pertemanan,
