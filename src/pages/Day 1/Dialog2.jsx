@@ -40,9 +40,9 @@ const Dialog2 = () => {
   return (
     <>
       <PageDialog
-        NamaKarakter="Aira"
+        NamaKarakter="..."
         Dialog={`Sebentar, mengapa kau mau berbicara dengan ku?`}
-        gambarkarakter="/Tocil.png"
+        gambarkarakter="/DAY1/airadialog1.png"
         opsi={[
           {
             text: "Sepertinya kamu butuh orang untuk bercerita.",

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGameContext } from "../../context/GameContext";
 import PageDialog from "../PageDialog";
+import { useNavigate } from "react-router-dom";
 
 const Dialog3 = () => {
   const {
@@ -13,6 +14,8 @@ const Dialog3 = () => {
   } = useGameContext();
 
   const [selectedOption, setSelectedOption] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleOptionA = () => {
     setSelectedOption("A");
@@ -40,26 +43,9 @@ const Dialog3 = () => {
   return (
     <>
       <PageDialog
-        NamaKarakter="..."
-        Dialog={`(menunjukkan rasa tidak percaya diri) “Tidak ada gunanya mencoba berteman.”`}
-        gambarkarakter={["/DAY1/airadialog1.png"]}
-        opsi={[
-          {
-            text: "Kita semua layak mendapatkan teman.",
-            action: handleOptionA,
-            type: true, // Positif
-          },
-          {
-            text: "Itu tidak benar, teman pasti akan membantu jika ada kesulitan.",
-            action: handleOptionB,
-            type: true, // Positif
-          },
-          {
-            text: "Tidak kok, berteman itu banyak manfaatnya!",
-            action: handleOptionC,
-            type: true, // Netral
-          },
-        ]}
+        NamaKarakter="Aira"
+        Dialog={`Maaf ya kalau aku kesannya pesimis. Karena aku tidak pernah berteman sebelumnya. Kenalin juga nama ku Aira`}
+        gambarkarakter={["/DAY1/airadialog4.png"]}
         hari="Hari Pertama"
         background="/DAY1/bgdialog1.jpg"
         alert={feedback}
@@ -67,7 +53,11 @@ const Dialog3 = () => {
           kesenangan,
           pertemanan,
         }}
-        onCompleteNavigate="/day1/dialog4"
+        onComplete={() => {
+          setTimeout(() => {
+            navigate("/day2/dialog1");
+          }, 2500);
+        }}
       />
     </>
   );

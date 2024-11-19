@@ -6,7 +6,7 @@ import PageDialog from "../PageDialog";
 import OpeningStory from "../OpeningStory";
 
 const Dialog1 = () => {
-  const navigate = useNavigate(); // Tambahkan useNavigate
+  const navigate = useNavigate();
   const {
     updateKesenangan,
     updatePertemanan,
@@ -17,9 +17,21 @@ const Dialog1 = () => {
   } = useGameContext();
   const [selectedOption, setSelectedOption] = useState(null);
   const [showOpening, setShowOpening] = useState(true);
+  const [complete, setComplete] = useState(false);
+  const [dialog, setDialog] = useState(
+    `Di taman sekolah ada seorang wanita yang sedang duduk merenungi sesuatu yang sepertinya berat.`
+  );
 
   const handleOpeningComplete = () => {
-    setShowOpening(false); // Menyembunyikan OpeningStory dan menampilkan Outlet
+    setShowOpening(false); // Menyembunyikan OpeningStory dan menampilkan dialog pembuka
+  };
+
+  const whenComplete = () => {
+    setTimeout(() => {
+      setComplete(true);
+      setDialog(`Kamu siapa? Kenapa ingin duduk di sini?`);
+    }, 2500);
+    console.log("Dialog updated:", `Kamu siapa? Kenapa ingin duduk di sini?`);
   };
 
   const handleOptionA = () => {
@@ -45,10 +57,6 @@ const Dialog1 = () => {
     );
   };
 
-  const handleComplete = () => {
-    navigate("/day1/dialog2"); // Navigasi ke halaman berikutnya
-  };
-
   return (
     <>
       {showOpening ? (
@@ -56,36 +64,50 @@ const Dialog1 = () => {
       ) : (
         <div>
           <SplashScreen day={"Hari Pertama"} />
-          <PageDialog
-            NamaKarakter="Aira"
-            Dialog={`Kamu siapa? Kenapa ingin duduk di sini?`}
-            gambarkarakter={["/DAY1/airadialog1.png"]}
-            opsi={[
-              {
-                text: "Aku cuma merasa kamu butuh teman. Kenalin, nama aku Risa.",
-                action: handleOptionA,
-                type: true,
-              },
-              {
-                text: "Gapapa aku coba mau ngobrol saja sama kamu. Nama aku Risa.",
-                action: handleOptionB,
-                type: true,
-              },
-              {
-                text: "Aku cuma ingin bicara, tidak ada maksud lain. Kenalin ya, aku Risa.",
-                action: handleOptionC,
-                type: true,
-              },
-            ]}
-            hari="Hari Pertama"
-            background="/DAY1/bgdialog1.jpg"
-            alert={feedback}
-            status={{
-              kesenangan,
-              pertemanan,
-            }}
-            onCompleteNavigate="/day1/dialog2"
-          />
+          {!complete ? (
+            <PageDialog
+              key={dialog}
+              Dialog={dialog}
+              hari="Hari Pertama"
+              background="/DAY1/bgdialog1.jpg"
+              status={{
+                kesenangan,
+                pertemanan,
+              }}
+              onComplete={() => whenComplete()}
+            />
+          ) : (
+            <PageDialog
+              NamaKarakter="..."
+              Dialog={dialog}
+              gambarkarakter={["/DAY1/airadialog1.png"]}
+              opsi={[
+                {
+                  text: "Aku cuma merasa kamu butuh teman. Kenalin, nama aku Risa.",
+                  action: handleOptionA,
+                  type: true,
+                },
+                {
+                  text: "Gapapa aku coba mau ngobrol saja sama kamu. Nama aku Risa.",
+                  action: handleOptionB,
+                  type: true,
+                },
+                {
+                  text: "Aku cuma ingin bicara, tidak ada maksud lain. Kenalin ya, aku Risa.",
+                  action: handleOptionC,
+                  type: true,
+                },
+              ]}
+              hari="Hari Pertama"
+              background="/DAY1/bgdialog1.jpg"
+              alert={feedback}
+              status={{
+                kesenangan,
+                pertemanan,
+              }}
+              onCompleteNavigate="/day1/dialog2"
+            />
+          )}
         </div>
       )}
     </>
