@@ -20,17 +20,17 @@ const Dialog1 = () => {
   const [showOpening, setShowOpening] = useState(true);
   const [complete, setComplete] = useState(false);
   const [dialog, setDialog] = useState(
-    `Di saat jam istirahat Risa dan Aira sedang memakan bekal mereka berdua di taman sekolah. Tiba tiba ada sekumpulan perempuan yang menghampiri mereka.Ternyata itu adalah The Ladies!`
+    `Di saat jam istirahat Risa dan Aira sedang memakan bekal mereka berdua di taman sekolah. Tiba tiba ada sekumpulan perempuan yang menghampiri mereka. Ternyata itu adalah The Ladies!`
   );
 
   const handleOpeningComplete = () => {
     setShowOpening(false); // Menyembunyikan OpeningStory dan menampilkan dialog pembuka
   };
 
-  const whenComplete = () => {
+  const whenComplete = (param) => {
     setTimeout(() => {
       setComplete(true);
-      setDialog(`Eh liat guys ada anak tukang mabok Ahahahah.`);
+      setDialog(param);
     }, 2500);
   };
 
@@ -180,7 +180,9 @@ const Dialog1 = () => {
                 kesenangan,
                 pertemanan,
               }}
-              onComplete={() => whenComplete()}
+              onComplete={() =>
+                whenComplete("Eh liat guys ada anak tukang mabok Ahahahah.")
+              }
             />
           ) : (
             <div className="">
