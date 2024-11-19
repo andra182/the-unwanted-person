@@ -3,7 +3,8 @@ import TypeIt from "typeit-react";
 
 const OpeningStory = ({ onComplete }) => {
   const [currentParagraph, setCurrentParagraph] = useState(0);
-  const [isComplete, setIsComplete] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
+  const [isComplete, setIsComplete] = useState(false); 
 
   const paragraphs = [
     "Di daerah di Malang tepatnya di daerah Cemoro Kandang, hiduplah seorang perempuan cantik bernama Risa.",
@@ -18,9 +19,9 @@ const OpeningStory = ({ onComplete }) => {
     const handleKeyPress = (event) => {
       if (event.key === "Enter") {
         if (isComplete) {
-          handleSkip(); // Panggil fungsi handleSkip jika teks sudah lengkap
+          handleSkip();
         } else {
-          completeText(); // Lengkapi teks jika belum lengkap
+          completeText();
         }
       }
     };
@@ -35,23 +36,24 @@ const OpeningStory = ({ onComplete }) => {
   useEffect(() => {
     if (currentParagraph >= paragraphs.length) {
       const timer = setTimeout(() => {
-        onComplete(); // Memanggil callback untuk menyelesaikan OpeningStory
+        onComplete(); 
       }, 3000);
       return () => clearTimeout(timer);
     }
   }, [currentParagraph, paragraphs.length, onComplete]);
 
   const completeText = () => {
-    setIsComplete(true); // Tandai teks sebagai lengkap
-    setCurrentParagraph((prev) => prev + 1); // Lompat ke paragraf berikutnya
+    setIsTyping(false); 
+    setIsComplete(true); 
   };
 
   const handleSkip = () => {
     if (currentParagraph < paragraphs.length - 1) {
-      setCurrentParagraph((prev) => prev + 1); // Lompat ke paragraf berikutnya
-      setIsComplete(false); // Reset status lengkap
+      setCurrentParagraph((prev) => prev + 1); 
+      setIsTyping(true); 
+      setIsComplete(false); 
     } else {
-      onComplete(); // Jika sudah di paragraf terakhir, panggil onComplete
+      onComplete(); 
     }
   };
 
@@ -59,23 +61,29 @@ const OpeningStory = ({ onComplete }) => {
     <div className="bg-black text-white h-screen flex flex-col justify-center items-center overflow-y-hidden">
       <div className="w-3/4 p-4 text-lg">
         {currentParagraph < paragraphs.length ? (
-          <TypeIt
-            key={currentParagraph} // Re-render saat paragraf berubah
-            options={{
-              speed: 50,
-              cursor: true,
-              waitUntilVisible: true,
-              afterComplete: () => setIsComplete(true), // Tandai teks sebagai lengkap setelah selesai
-            }}
-            getAfterInit={(instance) => {
-              instance
-                .type(paragraphs[currentParagraph])
-                .pause(1500)
-                .exec(() => setIsComplete(true)) // Tandai teks sebagai lengkap setelah jeda
-                .go();
-              return instance;
-            }}
-          />
+          <div>
+            {isTyping ? (
+              <TypeIt
+                key={currentParagraph}
+                options={{
+                  speed: 50,
+                  cursor: true,
+                  waitUntilVisible: true,
+                  afterComplete: () => setIsComplete(true),
+                }}
+                getAfterInit={(instance) => {
+                  instance
+                    .type(paragraphs[currentParagraph]) 
+                    .pause(1500) 
+                    .exec(() => setIsComplete(true)) 
+                    .go();
+                  return instance;
+                }}
+              />
+            ) : (
+              <p>{paragraphs[currentParagraph]}</p> 
+            )}
+          </div>
         ) : (
           <div className="text-center">
             <p className="text-xl">Cerita dimulai.</p>
@@ -83,8 +91,7 @@ const OpeningStory = ({ onComplete }) => {
         )}
       </div>
       <button onClick={handleSkip} className="mt-4 font-semibold underline-offset-2 hover:underline text-white rounded fixed bottom-10 right-10">
-       Click
-        Enter To Skip
+        Click Enter To Skip
       </button>
     </div>
   );
