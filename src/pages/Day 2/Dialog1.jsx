@@ -68,6 +68,7 @@ const Dialog1 = () => {
           <PageDialog
             key={dialog}
             Dialog={dialog}
+            DelayTyping={4500}
             hari="Hari Kedua"
             background="/DAY2/bgdialog1.jpg"
             status={{

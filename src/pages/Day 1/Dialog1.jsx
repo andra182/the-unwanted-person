@@ -68,20 +68,20 @@ const Dialog1 = () => {
             <PageDialog
               key={dialog}
               Dialog={dialog}
-              
+              DelayTyping={4500}
               hari="Hari Pertama"
               background="/DAY1/bgdialog1.jpg"
               status={{
                 kesenangan,
                 pertemanan,
               }}
-              
               onComplete={() => whenComplete()}
             />
           ) : (
             <PageDialog
               NamaKarakter="..."
               Dialog={dialog}
+              DelayTyping={1000}
               gambarkarakter={["/DAY1/airadialog1.png"]}
               opsi={[
                 {
