@@ -67,14 +67,17 @@ const PageDialog = ({
       </div>
       <div className="relative mt-20">
         <div className="h-fit relative flex justify-evenly items-center">
-            {/* <p className="text-2xl font-semibold text-white p-2 bg-black rounded-2xl">Memek</p> */}
+          {gambarkarakter && gambarkarakter.length > 0 && (
             <img className="w-96" src={gambarkarakter} alt="" />
-            </div>
+          )}
+        </div>
 
         <div className="relative bg-[#ffe680] shadow-multi-outline p-5 mx-36 rounded-2xl">
-          <div className="top-[-4vh] border-4 border-black absolute rounded-xl px-5 py-1 bg-[#fffaad]">
-            <p className="font-semibold">{NamaKarakter}</p>
-          </div>
+          {NamaKarakter && (
+            <div className="top-[-4vh] border-4 border-black absolute rounded-xl px-5 py-1 bg-[#fffaad]">
+              <p className="font-semibold">{NamaKarakter}</p>
+            </div>
+          )}
 
           <p className="text-black text-xl font-medium whitespace-pre-line">
             <TypeIt
@@ -90,7 +93,7 @@ const PageDialog = ({
           </p>
 
           <div className="relative z-10 flex gap-10 mt-10">
-            {showButtons && opsi.map((option, index) => (
+            {showButtons && opsi && opsi.length > 0 && opsi.map((option, index) => (
               <button
                 key={index}
                 className={`button-56 button-fade-in ${showButtons ? 'show' : ''}`}
