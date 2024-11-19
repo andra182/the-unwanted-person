@@ -47,7 +47,7 @@ const Credit = () => {
 
     return (
         <div className="relative bg-black h-screen w-screen overflow-hidden flex items-center justify-center">
-            <audio ref={bgMusicRef} src="./audio/memories-sunbeam.mp3" />
+            <audio ref={bgMusicRef} src="./audio/credit.mp3" />
             <div
                 className="absolute top-0 left-0 w-screen h-screen bg-no-repeat opacity-90 rounded-[2%]"
                 style={{

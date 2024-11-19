@@ -69,7 +69,7 @@ const HomePage = () => {
 
     return (
         <div className="relative bg-black h-screen w-screen overflow-hidden flex items-center justify-center">
-            <audio ref={bgMusicRef} src="./audio/night-detective.mp3" />
+            <audio ref={bgMusicRef} src="./audio/home.mp3" />
             <audio ref={startSFXRef} src="./audio/start.mp3" />
             {/* Optional */}
             <audio ref={glitchSFXRef} src="/glitch-sfx.mp3" />
