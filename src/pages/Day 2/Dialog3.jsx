@@ -7,6 +7,7 @@ const Dialog3 = () => {
     updateKesenangan,
     updatePertemanan,
     updateFeedback,
+    updatePathCerita,
     feedback,
     kesenangan,
     pertemanan,
@@ -23,7 +24,6 @@ const Dialog3 = () => {
       setShowDialog(nextDialog);
       setDialog(param);
     }, 2500);
-    console.log("Dialog updated:", `Kamu siapa? Kenapa ingin duduk di sini?`);
   };
 
   const handleOptionA = () => {

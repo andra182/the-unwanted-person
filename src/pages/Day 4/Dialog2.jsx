@@ -13,16 +13,11 @@ const Dialog2 = () => {
     pertemanan,
     pathCerita,
   } = useGameContext();
-
-  const dialogByPathCerita = () => {
-    if (pathCerita === 0) {
-      return 'Dian membalas "Helloow kamu siapa Nona sok baik hati??"';
-    } else if (pathCerita === 1) {
-      ('Dian membalas "Hah maksud lu apa? Lu mau sok jadi pahlawan kesiangan?"');
-    }
-  };
-
-  const [dialog, setDialog] = useState(dialogByPathCerita());
+  const [dialog, setDialog] = useState(
+    pathCerita
+      ? 'Dian membalas "Helloow kamu siapa Nona sok baik hati?? "'
+      : 'Dian membalas "Hah maksud lu apa? Lu mau sok jadi pahlawan kesiangan?"'
+  );
   const [showDialog, setShowDialog] = useState(1);
 
   const whenComplete = (param, nextDialog) => {
@@ -206,17 +201,13 @@ const Dialog2 = () => {
           kesenangan,
           pertemanan,
         }}
-        onCompleteNavigate="/day3/dialog3"
+        onCompleteNavigate="/day4/dialog1"
       />
     );
   };
 
   if (showDialog === 1) {
-    if (pathCerita === 0 || pathCerita === 2) {
-      return <div>{positivePath()}</div>;
-    } else if (pathCerita === 1) {
-      return <div>{negativePath()}</div>;
-    }
+    return <div>{pathCerita ? positivePath() : negativePath()}</div>;
   } else if (showDialog === 2) {
     return <div>{endDialog()}</div>;
   }
