@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
@@ -9,6 +9,22 @@ const HomePage = () => {
     });
     const [showGlitch, setShowGlitch] = useState(false);
     const navigate = useNavigate();
+
+    const bgMusicRef = useRef(null);
+    const glitchSFXRef = useRef(null);
+    const startSFXRef = useRef(null);
+
+    useEffect(() => {
+        if (bgMusicRef.current) {
+            bgMusicRef.current.volume = 0.5;
+            bgMusicRef.current.loop = true; 
+            bgMusicRef.current.play();
+        }
+
+        return () => {
+            if (bgMusicRef.current) bgMusicRef.current.pause();
+        };
+    }, []);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -24,7 +40,13 @@ const HomePage = () => {
 
     useEffect(() => {
         const toggleGlitch = () => {
-            setShowGlitch((prev) => !prev);
+            setShowGlitch((prev) => {
+                if (!prev && glitchSFXRef.current) {
+                    glitchSFXRef.current.volume = 0.7; 
+                    glitchSFXRef.current.play(); 
+                }
+                return !prev;
+            });
         };
 
         const interval = setInterval(toggleGlitch, Math.random() * 3000 + 2000);
@@ -34,6 +56,12 @@ const HomePage = () => {
     const handlePress = () => {
         setIsPressed(true);
         setShowGlitch(true);
+
+        if (startSFXRef.current) {
+            startSFXRef.current.volume = 0.5;
+            startSFXRef.current.play();
+        }
+
         setTimeout(() => {
             navigate("/day1/dialog1");
         }, 2000);
@@ -41,6 +69,11 @@ const HomePage = () => {
 
     return (
         <div className="relative bg-black h-screen w-screen overflow-hidden flex items-center justify-center">
+            <audio ref={bgMusicRef} src="./audio/night-detective.mp3" />
+            <audio ref={startSFXRef} src="./audio/start.mp3" />
+            {/* Optional */}
+            <audio ref={glitchSFXRef} src="/glitch-sfx.mp3" />
+
             <div
                 className="absolute top-0 left-0 w-screen h-screen bg-no-repeat opacity-90 rounded-[2%] filter grayscale"
                 style={{
@@ -115,7 +148,7 @@ const HomePage = () => {
                 .glitch-overlay {
                     background: repeating-linear-gradient(
                         transparent 0%,
-                        rgb(255, 255, 255) 1%,
+                        rgb(255, 255, 255, 60) 1%,
                         transparent 2%
                     );
                     animation: glitch-overlay 0.5s steps(5) infinite; /* Increased steps for more intense effect */
