@@ -41,10 +41,10 @@ const Dialog2 = () => {
     <>
       <PageDialog
         NamaKarakter="..."
+        Audio={"/audio/home.mp3"}
         Dialog={`Sebentar, mengapa kau mau berbicara dengan ku?`}
-        DelayTyping={1} 
-        gambarkarakter={["/DAY1/airadialog1.png",
-          "/DAY1/airadialog1.png"]}
+        DelayTyping={1}
+        gambarkarakter={["/DAY1/airadialog1.png", "/DAY1/airadialog1.png"]}
         opsi={[
           {
             text: "Sepertinya kamu butuh orang untuk bercerita.",

@@ -165,6 +165,7 @@ const Dialog1 = () => {
         <OpeningStory
           onComplete={() => handleOpeningComplete()}
           paragraphs={paragraphs}
+          endText="Cerita Berlanjut..."
         />
       ) : (
         <div>

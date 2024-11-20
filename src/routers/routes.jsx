@@ -1,4 +1,5 @@
 import Credit from "../pages/Credit";
+import Dirga from "../pages/Dirga";
 import HomePage from "../pages/Home";
 import OpeningStory from "../pages/OpeningStory";
 
@@ -13,7 +14,7 @@ const routes = [
   },
   {
     path: "/test",
-    element: <OpeningStory />,
+    element: <Dirga />,
   },
 ];
 

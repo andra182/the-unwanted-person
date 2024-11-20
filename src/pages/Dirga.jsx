@@ -1,22 +1,13 @@
-import React from 'react'
-import StatusBar from '../components/StatusBar'
-import SemiCircleProgress from '../components/ProgressHalfCircle'
+import React from "react";
+import mySong from "/audio/home.mp3";
 
 const Dirga = () => {
   return (
-    <div className='flex'>
-      <SemiCircleProgress
-        title="Kesenangan"
-        value= "18"
-        color="#FFC107"
-      />
-      <SemiCircleProgress
-        title="Pertemanan"
-        value="18"
-        color="#F44336"
-      />
+    <div>
+      <audio src={mySong} autoPlay loop />
+      <h1>Welcome to My App!</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Dirga
+export default Dirga;

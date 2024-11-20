@@ -93,7 +93,7 @@ const Dialog3 = () => {
   };
 
   const endDialog = () => {
-    return <OpeningStory paragraphs={paragraphs} />;
+    return <OpeningStory paragraphs={paragraphs} endDialog="Coming soon" />;
   };
 
   if (showDialog === 1) {
