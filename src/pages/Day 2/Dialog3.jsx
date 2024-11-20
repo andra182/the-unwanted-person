@@ -51,7 +51,13 @@ const Dialog3 = () => {
     );
   };
 
-  function pathCeritaFunc() {}
+  function pathCeritaFunc() {
+    if (kesenangan >= 63 && pertemanan >= 63) {
+      updatePathCerita(0);
+    } else {
+      updatePathCerita(1);
+    }
+  }
 
   if (showDialog === 1) {
     return (

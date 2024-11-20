@@ -27,6 +27,7 @@ const Dialog3 = () => {
   const [showDialog, setShowDialog] = useState(1);
   const paragraphs_positive = [
     "Dian dan the Ladies pun pergi tanpa meninggalkan satu patah kata pun karena tidak bisa membalas Risa.",
+    "Coming Soon.",
   ];
 
   const paragraphs_negative = [
@@ -52,7 +53,10 @@ const Dialog3 = () => {
         key={dialog}
         NamaKarakter="Dian"
         Dialog={dialog}
-        gambarkarakter={["/DAY1/airadialog1.png"]}
+        gambarkarakter={[
+          "/DAY3/risadanairadialog2.png",
+          "/DAY3/diandialog2.png",
+        ]}
         hari="Hari Ketiga"
         background="/DAY2/bgdialog1.jpg"
         status={{
