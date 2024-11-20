@@ -51,7 +51,6 @@ const Dialog2 = () => {
             text: "Sepertinya kamu butuh orang untuk bercerita.",
             action: handleOptionA,
             type: "negative",
-            message: "Developer Ganteng",
           },
           {
             text: "Gapapa Aku bingung aja kenapa ada orang yang sendiri sementara ini baru masuk sekolah.",
