@@ -107,7 +107,7 @@ const PageDialog = ({
                         </TypeIt>
                     </p>
 
-                    <div className="relative z-10 flex gap-10 mt-10">
+                    <div className="relative z-10 flex gap-10 mt-10 comic">
                         {showButtons &&
                             opsi &&
                             opsi.length > 0 &&
