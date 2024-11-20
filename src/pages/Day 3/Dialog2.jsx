@@ -26,11 +26,11 @@ const Dialog2 = () => {
   const [showDialog, setShowDialog] = useState(1);
 
   const whenComplete = (param, nextDialog) => {
+    console.log("Mengubah ke dialog:", nextDialog); // Debug
     setTimeout(() => {
       setShowDialog(nextDialog);
       setDialog(param);
     }, 2500);
-    console.log(nextDialog);
   };
 
   const positivePath = () => {
@@ -56,10 +56,13 @@ const Dialog2 = () => {
 
     return (
       <PageDialog
-        key={dialog}
+        key={"dadsfasdfasd"}
         NamaKarakter="Dian"
         Dialog={dialog}
-        gambarkarakter={["/DAY1/airadialog1.png"]}
+        gambarkarakter={[
+          "/DAY3/risadanairadialog2.png",
+          "/DAY2/diandialog1.png",
+        ]}
         opsi={[
           {
             text: "Itu gak penting, gue tanya kenapa lu ngejek dia kayak gitu?!",
@@ -157,14 +160,12 @@ const Dialog2 = () => {
 
   const endDialog = () => {
     const handleOptionA = () => {
-      setSelectedOption("A");
       updateKesenangan(5);
       updatePertemanan(4);
       updateFeedback("Situasi tampak panas tetapi masih bisa dikendalikan.");
     };
 
     const handleOptionB = () => {
-      setSelectedOption("B");
       updateKesenangan(2);
       updatePertemanan(1);
       updateFeedback(
@@ -173,7 +174,6 @@ const Dialog2 = () => {
     };
 
     const handleOptionC = () => {
-      setSelectedOption("C");
       updateKesenangan(1);
       updatePertemanan(0);
       updateFeedback("Dian semakin emosi dan geram.");
@@ -183,7 +183,10 @@ const Dialog2 = () => {
       <PageDialog
         NamaKarakter="Dian"
         Dialog={dialog}
-        gambarkarakter={["/DAY1/airadialog1.png"]}
+        gambarkarakter={[
+          "/DAY3/risadanairadialog2.png",
+          "/DAY3/diandialog2.png",
+        ]}
         opsi={[
           {
             text: "Lah, ga salah kan gue? gue yang harusnya nanya kenapa lu ngejek dia?",
@@ -207,7 +210,10 @@ const Dialog2 = () => {
           kesenangan,
           pertemanan,
         }}
-        onCompleteNavigate="/day3/dialog3"
+        onCompleteClick={() => {
+          console.log("Navigasi ke /day3/dialog3"); // Debug
+          navigate("/day3/dialog3");
+        }}
       />
     );
   };
