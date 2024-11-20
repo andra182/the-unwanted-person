@@ -164,3 +164,21 @@
   }
   
   
+  .button-hidden {
+    display: none; /* Sembunyikan tombol lain */
+  }
+  
+  .button-disabled {
+    background-color: #a9a9a9; /* Warna abu-abu */
+    color: #ffffff; /* Teks putih */
+    cursor: not-allowed; /* Ubah kursor */
+  }
+  
+  button:disabled {
+    background-color: #a9a9a9; /* Warna abu-abu */
+    color: #ffffff; /* Teks putih */
+    cursor: not-allowed; /* Mengubah kursor untuk tombol yang dinonaktifkan */
+    pointer-events: none; /* Pastikan tidak merespons klik */
+    border: 1px solid #a9a9a9; /* Sesuaikan border dengan warna tombol */
+  }
+  
