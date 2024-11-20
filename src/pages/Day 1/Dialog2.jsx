@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useGameContext } from "../../context/GameContext";
 import PageDialog from "../PageDialog";
-
+import AudioPlayer from "../../components/AudioPlayer";
 const Dialog2 = () => {
   const {
     updateKesenangan,
@@ -39,12 +39,13 @@ const Dialog2 = () => {
 
   return (
     <>
+      <AudioPlayer src="/audio/day1.mp3" />
       <PageDialog
         NamaKarakter="..."
+        Audio={"/audio/day1.mp4"}
         Dialog={`Sebentar, mengapa kau mau berbicara dengan ku?`}
-        DelayTyping={1} 
-        gambarkarakter={["/DAY1/airadialog1.png",
-          "/DAY1/airadialog1.png"]}
+        DelayTyping={1}
+        gambarkarakter={["/DAY1/airadialog1.png", "/DAY1/airadialog1.png"]}
         opsi={[
           {
             text: "Sepertinya kamu butuh orang untuk bercerita.",

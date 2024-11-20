@@ -1,7 +1,7 @@
 import Credit from "../pages/Credit";
+import Dirga from "../pages/Dirga";
 import HomePage from "../pages/Home";
 import OpeningStory from "../pages/OpeningStory";
-import Dirga from "../pages/Dirga";
 
 const routes = [
   {

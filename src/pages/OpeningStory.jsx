@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TypeIt from "typeit-react";
 
-const OpeningStory = ({ onComplete, paragraphs }) => {
+const OpeningStory = ({ onComplete, paragraphs, endText }) => {
   const [currentParagraph, setCurrentParagraph] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
   const [isComplete, setIsComplete] = useState(false);
@@ -77,7 +77,7 @@ const OpeningStory = ({ onComplete, paragraphs }) => {
           </div>
         ) : (
           <div className="text-center">
-            <p className="text-xl">Cerita dimulai.</p>
+            <p className="text-xl">{endText}</p>
           </div>
         )}
       </div>

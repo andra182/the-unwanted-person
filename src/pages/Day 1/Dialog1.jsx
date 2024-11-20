@@ -72,6 +72,7 @@ const Dialog1 = () => {
         <OpeningStory
           onComplete={handleOpeningComplete}
           paragraphs={paragraphs}
+          endText="Cerita Dimulai."
         />
       ) : (
         <div>
@@ -79,6 +80,7 @@ const Dialog1 = () => {
           {!complete ? (
             <PageDialog
               key={dialog}
+              Audio={"/audio/day1.mp3"}
               Dialog={dialog}
               DelayTyping={4500}
               hari="Hari Pertama"
@@ -94,6 +96,7 @@ const Dialog1 = () => {
               NamaKarakter="..."
               Dialog={dialog}
               DelayTyping={1000}
+              Audio={"/audio/day1.mp3"}
               gambarkarakter={["/DAY1/airadialog1.png"]}
               opsi={[
                 {

@@ -25,6 +25,19 @@ const Dialog3 = () => {
 
   const [dialog, setDialog] = useState(dialogByPathCerita());
   const [showDialog, setShowDialog] = useState(1);
+  const paragraphs_positive = [
+    "Dian dan the Ladies pun pergi tanpa meninggalkan satu patah kata pun karena tidak bisa membalas Risa.",
+  ];
+
+  const paragraphs_negative = [
+    "Dikarenakan adu mulut antara Risa dan Dian sangat kencang sampai hampir satu sekolah melihatnya, akhirnya ada seorang guru BK yang menghampiri mereka berdua dan menasehatinya dan menyuruh mereka untuk ke Ruang BK besok.",
+  ];
+
+  if (pathCerita === 0 || pathCerita === 2) {
+    var paragraphs = paragraphs_positive;
+  } else if (pathCerita === 1) {
+    var paragraphs = paragraphs_negative;
+  }
 
   const whenComplete = (param, nextDialog) => {
     setTimeout(() => {
@@ -80,7 +93,7 @@ const Dialog3 = () => {
   };
 
   const endDialog = () => {
-    return <OpeningStory paragraphs={dialog} />;
+    return <OpeningStory paragraphs={paragraphs} endDialog="Coming soon" />;
   };
 
   if (showDialog === 1) {

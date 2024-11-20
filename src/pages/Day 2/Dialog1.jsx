@@ -66,6 +66,7 @@ const Dialog1 = () => {
         <SplashScreen day={"Hari Kedua"} />
         {!complete ? (
           <PageDialog
+            Audio={"/audio/day1.mp3"}
             key={dialog}
             Dialog={dialog}
             DelayTyping={4500}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useGameContext } from "../../context/GameContext";
 import PageDialog from "../PageDialog";
+import AudioPlayer from "../../components/AudioPlayer";
 
 const Dialog3 = () => {
   const {
@@ -39,6 +40,7 @@ const Dialog3 = () => {
 
   return (
     <>
+      <AudioPlayer src="/audio/day1.mp3" />
       <PageDialog
         NamaKarakter="..."
         Dialog={`(menunjukkan rasa tidak percaya diri) “Tidak ada gunanya mencoba berteman.”`}
