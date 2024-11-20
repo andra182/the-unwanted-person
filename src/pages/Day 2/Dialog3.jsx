@@ -97,7 +97,7 @@ const Dialog3 = () => {
             },
           ]}
           hari="Hari Kedua"
-          background="/DAY1/bgdialog1.jpg"
+          background="/DAY2/bgdialog3.jpg"
           alert={feedback}
           status={{
             kesenangan,
