@@ -104,7 +104,7 @@ const PageDialog = ({
 
                 {/* Animated Component */}
                 <div
-                    className={`Component-1 relative bg-[#ffe680] shadow-multi-outline p-5 ${gambarkarakter && gambarkarakter.length > 0
+                    className={`Component-1 mx-28 relative bg-[#ffe680] shadow-multi-outline p-5 ${gambarkarakter && gambarkarakter.length > 0
                         ? "mx-36 rounded-2xl"
                         : "rounded-xl"
                         } ${animateClass}`} // Terapkan kelas animasi

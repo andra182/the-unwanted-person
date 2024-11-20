@@ -35,22 +35,22 @@ const Dialog2 = () => {
 
   const positivePath = () => {
     const handleOptionA = () => {
-      updateKesenangan(8);
-      updatePertemanan(9);
+      updateKesenangan(5);
+      updatePertemanan(5);
       updateFeedback("Hati Aira lebih tenang karena ada yang membelanya.");
     };
 
     const handleOptionB = () => {
-      updateKesenangan(4);
-      updatePertemanan(3);
+      updateKesenangan(-5);
+      updatePertemanan(-5);
       updateFeedback(
         "Kamu tersulut emosi! ini akan memperkeruh situasi kedepannya."
       );
     };
 
     const handleOptionC = () => {
-      updateKesenangan(8);
-      updatePertemanan(8);
+      updateKesenangan(2);
+      updatePertemanan(2);
       updateFeedback("Hati Aira lebih tenang karena ada yang membelanya.");
     };
 
@@ -74,7 +74,7 @@ const Dialog2 = () => {
           {
             text: "Siapa kek gw cuman ga seneng kalau teman gw ada yang ngejek.",
             action: handleOptionC,
-            type: "positive",
+            type: "neutral",
           },
         ]}
         hari="Hari Ketiga"

@@ -16,15 +16,15 @@ const Dialog2 = () => {
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(8);
-    updatePertemanan(7);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback("Aira sedikit terbuka. Hubungan berkembang positif.");
   };
 
   const handleOptionB = () => {
     setSelectedOption("B");
-    updateKesenangan(5);
-    updatePertemanan(3);
+    updateKesenangan(2);
+    updatePertemanan(2);
     updateFeedback(
       "Aira tetap diam, tetapi tidak menjauh. Perkembangan lambat."
     );
@@ -32,7 +32,7 @@ const Dialog2 = () => {
 
   const handleOptionC = () => {
     setSelectedOption("C");
-    updateKesenangan(6);
+    updateKesenangan(5);
     updatePertemanan(5);
     updateFeedback("Aira masih terdiam tetapi hati Aira mulai terbuka.");
   };
@@ -50,7 +50,7 @@ const Dialog2 = () => {
           {
             text: "Sepertinya kamu butuh orang untuk bercerita.",
             action: handleOptionA,
-            type: "negative",
+            type: "positive",
           },
           {
             text: "Gapapa Aku bingung aja kenapa ada orang yang sendiri sementara ini baru masuk sekolah.",

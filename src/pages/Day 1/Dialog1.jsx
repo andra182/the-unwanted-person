@@ -45,7 +45,7 @@ const Dialog1 = () => {
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(10);
+    updateKesenangan(5);
     updatePertemanan(5);
     updateFeedback("Aira merasa dihargai. Hubungan membaik.");
   };
@@ -53,14 +53,14 @@ const Dialog1 = () => {
   const handleOptionB = () => {
     setSelectedOption("B");
     updateKesenangan(5);
-    updatePertemanan(3);
+    updatePertemanan(5);
     updateFeedback("Hati Aira perlahan terbuka. Ada kemajuan.");
   };
 
   const handleOptionC = () => {
     setSelectedOption("C");
-    updateKesenangan(-5);
-    updatePertemanan(1);
+    updateKesenangan(2);
+    updatePertemanan(2);
     updateFeedback(
       "Aira tetap skeptis, tetapi bersedia mendengar lebih banyak."
     );
@@ -115,7 +115,7 @@ const Dialog1 = () => {
                 {
                   text: "Aku cuma ingin bicara, tidak ada maksud lain. Kenalin ya, aku Risa.",
                   action: handleOptionC,
-                  type: "negative",
+                  type: "neutral",
                 },
               ]}
               hari="Hari Pertama"
