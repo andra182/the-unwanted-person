@@ -97,7 +97,10 @@ const Dialog1 = () => {
               Dialog={dialog}
               DelayTyping={1000}
               Audio={"/audio/day1.mp3"}
-              gambarkarakter={["/DAY1/airadialog1.png"]}
+              gambarkarakter={[
+                "/DAY1/risadialog1.png",
+                "/DAY1/airadialog1.png",
+              ]}
               opsi={[
                 {
                   text: "Aku cuma merasa kamu butuh teman. Kenalin, nama aku Risa.",

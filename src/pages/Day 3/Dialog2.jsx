@@ -30,6 +30,7 @@ const Dialog2 = () => {
       setShowDialog(nextDialog);
       setDialog(param);
     }, 2500);
+    console.log(nextDialog);
   };
 
   const positivePath = () => {
