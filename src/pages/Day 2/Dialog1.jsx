@@ -82,7 +82,7 @@ const Dialog1 = () => {
           <PageDialog
             NamaKarakter="Sirkel Sebelah"
             Dialog={dialog}
-            gambarkarakter={["/DAY1/airadialog1.png"]}
+            gambarkarakter={["/DAY1/airadialog1.png", "/DAY2/diandialog1.png"]}
             opsi={[
               {
                 text: "Berhenti bersikap seperti itu! Tidak ada yang pantas diperlakukan begini.",

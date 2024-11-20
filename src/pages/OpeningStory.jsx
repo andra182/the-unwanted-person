@@ -24,10 +24,13 @@ const OpeningStory = ({ onComplete, paragraphs, endText }) => {
     };
   }, [isComplete]);
 
+  const [hasFinished, setHasFinished] = useState(false);
+
   useEffect(() => {
-    if (currentParagraph >= paragraphs.length) {
+    if (currentParagraph === paragraphs.length) {
+      setHasFinished(true); // Tandai bahwa cerita selesai
       const timer = setTimeout(() => {
-        onComplete();
+        onComplete(); // Pindah ke halaman berikutnya setelah jeda
       }, 3000);
       return () => clearTimeout(timer);
     }
@@ -52,6 +55,7 @@ const OpeningStory = ({ onComplete, paragraphs, endText }) => {
     <div className="bg-black text-white h-screen flex flex-col justify-center items-center overflow-y-hidden">
       <div className="w-3/4 p-4 text-lg">
         {currentParagraph < paragraphs.length ? (
+          // Sedang mengetik atau menampilkan paragraf
           <div>
             {isTyping ? (
               <TypeIt
@@ -75,18 +79,21 @@ const OpeningStory = ({ onComplete, paragraphs, endText }) => {
               <p>{paragraphs[currentParagraph]}</p>
             )}
           </div>
-        ) : (
+        ) : hasFinished ? (
+          // Cerita selesai
           <div className="text-center">
-            <p className="text-xl">{endText}</p>
+            <p className="text-xl">Cerita Selesai.</p>
           </div>
-        )}
+        ) : null}
       </div>
-      <button
-        onClick={handleSkip}
-        className="mt-4 font-semibold underline-offset-2 hover:underline text-white rounded fixed bottom-10 right-10"
-      >
-        Click Enter To Skip
-      </button>
+      {currentParagraph < paragraphs.length && (
+        <button
+          onClick={handleSkip}
+          className="mt-4 font-semibold underline-offset-2 hover:underline text-white rounded fixed bottom-10 right-10"
+        >
+          Click Enter To Skip
+        </button>
+      )}
     </div>
   );
 };

@@ -71,7 +71,7 @@ const Dialog1 = () => {
       <PageDialog
         NamaKarakter="The Ladies"
         Dialog={dialog}
-        gambarkarakter={["/DAY1/airadialog1.png"]}
+        gambarkarakter={["/DAY1/airadialog1.png", "/DAY2/diandialog1.png"]}
         opsi={[
           {
             text: "Apa maksudmu berkata seperti itu ke teman ku?!",
@@ -187,7 +187,7 @@ const Dialog1 = () => {
             />
           ) : (
             <div className="">
-              {pathCerita ? positivePath() : negativePath()}
+              {pathCerita === 0 ? positivePath() : negativePath()}
             </div>
           )}
         </div>

@@ -51,6 +51,8 @@ const Dialog3 = () => {
     );
   };
 
+  function pathCeritaFunc() {}
+
   if (showDialog === 1) {
     return (
       <>
@@ -103,6 +105,7 @@ const Dialog3 = () => {
             kesenangan,
             pertemanan,
           }}
+          onCompleteClick={() => updatePathCerita(pathCeritaFunc())}
           onCompleteNavigate="/day3/dialog1"
         />
       </>

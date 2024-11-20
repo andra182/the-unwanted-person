@@ -16,20 +16,19 @@ export const GameProvider = ({ children }) => {
   // Fungsi untuk update kesenangan dan pertemanan
   const updateKesenangan = (value) => {
     setKesenangan((prevKesenangan) => {
-        const newKesenangan = Math.max(0, Math.min(100, prevKesenangan + value));
-        console.log("Kesenangan updated:", newKesenangan);
-        return newKesenangan;
+      const newKesenangan = Math.max(0, Math.min(100, prevKesenangan + value));
+      console.log("Kesenangan updated:", newKesenangan);
+      return newKesenangan;
     });
-};
+  };
 
-const updatePertemanan = (value) => {
+  const updatePertemanan = (value) => {
     setPertemanan((prevPertemanan) => {
-        const newPertemanan = Math.max(0, Math.min(100, prevPertemanan + value));
-        console.log("Pertemanan updated:", newPertemanan);
-        return newPertemanan;
+      const newPertemanan = Math.max(0, Math.min(100, prevPertemanan + value));
+      console.log("Pertemanan updated:", newPertemanan);
+      return newPertemanan;
     });
-};
-
+  };
 
   // Fungsi untuk mengubah feedback
   const updateFeedback = (newFeedback) => {
