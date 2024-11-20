@@ -4,6 +4,7 @@ import TypeIt from "typeit-react";
 import "./style.css";
 import StatusBar from "../components/StatusBar";
 import AlertMessage from "../components/AlertMessage";
+import { useGameContext } from "../context/GameContext";
 
 const PageDialog = ({
     NamaKarakter,
@@ -12,11 +13,12 @@ const PageDialog = ({
     opsi,
     hari,
     background,
-    status,
     onCompleteNavigate,
     DelayTyping,
     onComplete,
+    onCompleteClick
 }) => {
+    const { kesenangan, pertemanan } = useGameContext()
     const [alertVisible, setAlertVisible] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const [alertType, setAlertType] = useState("");
@@ -32,21 +34,36 @@ const PageDialog = ({
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(() => {
+        console.log("Kesenangan dari konteks:", kesenangan);
+        console.log("Pertemanan dari konteks:", pertemanan);
+    }, [kesenangan, pertemanan]);
+
     const handleOptionClick = async (option, index) => {
         setAlertVisible(true);
         setAlertMessage(option.message);
         setAlertType(option.type);
         setDisabledOption(index);
-
+    
+        // Panggil fungsi action jika ada
+        if (option.action) {
+            option.action();
+        }
+    
         await new Promise((resolve) => {
             setTimeout(() => {
                 setAlertVisible(false);
                 resolve();
             }, 3000);
         });
-
+    
+        // Navigasi dan callback
         navigate(onCompleteNavigate);
+        if (onCompleteClick) {
+            onCompleteClick(true);
+        }
     };
+    
 
     return (
         <div className="justify-center items-center">
@@ -59,8 +76,8 @@ const PageDialog = ({
                 <p className="p-10 fixed text-xl font-bold text-white">{hari}</p>
                 <div className="flex right-0 z-10 fixed m-10">
                     <StatusBar
-                        kesenangan={status.kesenangan}
-                        pertemanan={status.pertemanan}
+                        kesenangan={kesenangan}
+                        pertemanan={pertemanan}
                     />
                 </div>
             </div>
