@@ -1,12 +1,11 @@
-import Day2 from "./Day2";
+import Day4 from "./Day4";
 import Dialog1 from "./Dialog1";
 import Dialog2 from "./Dialog2";
-import Dialog3 from "./Dialog3";
 
-const secondd_routes = [
+const fourthd_routes = [
   {
-    path: "/day2",
-    element: <Day2 />,
+    path: "/day4",
+    element: <Day4 />,
     children: [
       {
         path: "dialog1",
@@ -16,12 +15,8 @@ const secondd_routes = [
         path: "dialog2",
         element: <Dialog2 />,
       },
-      {
-        path: "dialog3",
-        element: <Dialog3 />,
-      },
     ],
   },
 ];
 
-export default secondd_routes;
+export default fourthd_routes;

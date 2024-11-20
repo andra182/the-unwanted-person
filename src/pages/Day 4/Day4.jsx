@@ -4,7 +4,7 @@ import { Outlet, Navigate } from "react-router-dom";
 import OpeningStory from "../OpeningStory";
 import SplashScreen from "../../components/SplashScreen";
 
-const Day2 = () => {
+const Day4 = () => {
   return (
     <div>
       <Outlet />
@@ -12,4 +12,4 @@ const Day2 = () => {
   );
 };
 
-export default Day2;
+export default Day4;

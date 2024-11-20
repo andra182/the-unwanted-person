@@ -7,70 +7,107 @@ const Dialog3 = () => {
     updateKesenangan,
     updatePertemanan,
     updateFeedback,
+    updatePathCerita,
     feedback,
     kesenangan,
     pertemanan,
   } = useGameContext();
 
   const [selectedOption, setSelectedOption] = useState(null);
+  const [showDialog, setShowDialog] = useState(1);
+  const [dialog, setDialog] = useState(
+    `Bel pulang sekolah pun berbunyi, Risa dan Aira pulang ke rumah nya masing masing.`
+  );
+
+  const whenComplete = (param, nextDialog) => {
+    setTimeout(() => {
+      setShowDialog(nextDialog);
+      setDialog(param);
+    }, 2500);
+  };
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(9);
-    updatePertemanan(8);
-    updateFeedback("Aira mulai melihat harapan kecil. Rasa percaya meningkat.");
+    updateKesenangan(10);
+    updatePertemanan(10);
+    updateFeedback("Tekad Risa tumbuh lebih kuat. Hubungan semakin erat.");
   };
 
   const handleOptionB = () => {
     setSelectedOption("B");
-    updateKesenangan(10);
-    updatePertemanan(9);
-    updateFeedback("Aira termakan ucapan Risa dan mulai membuka hatinya.");
+    updateKesenangan(7);
+    updatePertemanan(6);
+    updateFeedback(
+      "Risa tetap mendukung tetapi dengan rasa takut. Ini membuat bantuan terhambat."
+    );
   };
 
   const handleOptionC = () => {
     setSelectedOption("C");
-    updateKesenangan(7);
-    updatePertemanan(6);
+    updateKesenangan(3);
+    updatePertemanan(2);
     updateFeedback(
-      "Aira merasa bingung, tetapi tidak menjauh. Potensi masih ada."
+      "Risa mulai meragukan perannya, membuat Aira merasa tidak ada yang mendukung."
     );
   };
 
-  return (
-    <>
-      <PageDialog
-        NamaKarakter="..."
-        Dialog={`(menunjukkan rasa tidak percaya diri) “Tidak ada gunanya mencoba berteman.”`}
-        gambarkarakter={["/DAY1/airadialog1.png"]}
-        opsi={[
-          {
-            text: "Kita semua layak mendapatkan teman.",
-            action: handleOptionA,
-            type: "positive", // Positif
-          },
-          {
-            text: "Itu tidak benar, teman pasti akan membantu jika ada kesulitan.",
-            action: handleOptionB,
-            type: "positive", // Positif
-          },
-          {
-            text: "Tidak kok, berteman itu banyak manfaatnya!",
-            action: handleOptionC,
-            type: "neutral", // Netral
-          },
-        ]}
-        hari="Hari Pertama"
-        background="/DAY1/bgdialog1.jpg"
-        alert={feedback}
-        status={{
-          kesenangan,
-          pertemanan,
-        }}
-        onCompleteNavigate="/day1/dialog4"
-      />
-    </>
-  );
+  if (showDialog === 1) {
+    return (
+      <>
+        <PageDialog
+          key={dialog}
+          Dialog={dialog}
+          hari="Hari Kedua"
+          gambarkarakter={[
+            "/DAY2/risadialog2-1.png",
+            "/DAY2/airadialog2-2.png",
+          ]}
+          background="/DAY2/bgdialog2.jpg"
+          status={{
+            kesenangan,
+            pertemanan,
+          }}
+          onComplete={() =>
+            whenComplete("Risa merenung di rumah tentang situasi Aira", 2)
+          }
+        />
+      </>
+    );
+  } else if (showDialog === 2) {
+    return (
+      <>
+        <PageDialog
+          Dialog={dialog}
+          gambarkarakter={["/DAY2/risadialog3.png"]}
+          opsi={[
+            {
+              text: "Aku tidak bisa membiarkan dia menghadapi ini sendirian.",
+              action: handleOptionA,
+              type: true, // Positif
+            },
+            {
+              text: "Aku harus berhati-hati, tetapi tetap di sisinya.",
+              action: handleOptionB,
+              type: true, // Positif
+            },
+            {
+              text: "Mungkin ini terlalu sulit untukku. Apa aku abaikan saja ya Dia?",
+              action: handleOptionC,
+              type: false, // Negatif
+            },
+          ]}
+          hari="Hari Kedua"
+          background="/DAY1/bgdialog1.jpg"
+          alert={feedback}
+          status={{
+            kesenangan,
+            pertemanan,
+          }}
+          onCompleteNavigate="/day3/dialog1"
+        />
+      </>
+    );
+  }
 };
 
 export default Dialog3;
