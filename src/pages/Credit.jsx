@@ -14,7 +14,7 @@ const Credit = () => {
     useEffect(() => {
         if (bgMusicRef.current) {
             bgMusicRef.current.volume = 0.5;
-            bgMusicRef.current.loop = true; 
+            bgMusicRef.current.loop = true;
             bgMusicRef.current.play();
         }
 
@@ -35,15 +35,14 @@ const Credit = () => {
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
+    // useEffect(() => {
+    //     const toggleGlitch = () => {
+    //         setShowGlitch((prev) => !prev);
+    //     };
 
-    useEffect(() => {
-        const toggleGlitch = () => {
-            setShowGlitch((prev) => !prev);
-        };
-
-        const interval = setInterval(toggleGlitch, Math.random() * 3000 + 2000);
-        return () => clearInterval(interval);
-    }, []);
+    //     const interval = setInterval(toggleGlitch, Math.random() * 3000 + 2000);
+    //     return () => clearInterval(interval);
+    // }, []);
 
     return (
         <div className="relative bg-black h-screen w-screen overflow-hidden flex items-center justify-center">
@@ -63,25 +62,77 @@ const Credit = () => {
             )}
             <div className="relative w-full h-full z-10 text-white">
                 <div className="absolute bottom-0 w-full h-full overflow-hidden">
-                    <div className="absolute w-full text-center animate-scroll">
-                        <p>Director: John Doe</p>
-                        <p>Producer: Lorem Ipsum</p>
-                        <p>Script Writer: Alice Johnson</p>
+                    <div className="absolute text-lg w-full text-center animate-scroll">
+                        
+
+                        {/* Team Section */}
+                        <h1 className="text-2xl mb-2 font-bold">Our Team</h1>
+                        <p>Anne Dwi Revina</p>
+                        <p>Dirga Hardeka Agustiantara</p>
+                        <p>Habibunayka Miftah Al-Rizqi</p>
+                        <p>Muhammad Istiqlal Fajar Sya'bani</p>
+                        <p>Rafi Julian</p>
+                        <p>Rivandra Abhista Adam Prassaya</p>
                         <br />
-                        <p>Lead Developer: Your Name</p>
-                        <p>UI/UX Designer: Verify</p>
-                        <p>Frontend Developer: Shit</p>
-                        <p>Backend Developer: WTF</p>
                         <br />
-                        <p>Art Director: TT</p>
-                        <p>Music Composer: HH</p>
-                        <p>Sound Engineer: OOH</p>
+
+                        {/* Game Developer Section */}
+                        <h1 className="text-2xl mb-2 font-bold">
+                            Game Developers
+                        </h1>
+                        <p>Dirga Hardeka Agustiantara</p>
+                        <p>Habibunayka Miftah Al-Rizqi</p>
+                        <p>Rivandra Abhista Adam Prassaya</p>
                         <br />
-                        <p>Special Thanks: All Supporters</p>
-                        <p>SMKN 1 Cibinong</p>
+                        <br />
+
+                        {/* Game Assets Section */}
+                        <h1 className="text-2xl mb-2 font-bold">Game Assets</h1>
+                        <p>Anne Dwi Revina</p>
+                        <p>Habibunayka Miftah Al-Rizqi</p>
+                        <p>Muhammad Istiqlal Fajar Sya'bani</p>
+                        <p>Rafi Julian</p>
+                        <br />
+                        <br />
+
+                        {/* Game Story Section */}
+                        <h1 className="text-2xl mb-2 font-bold">Game Story</h1>
+                        <p>Muhammad Istiqlal Fajar Sya'bani</p>
+                        <p>Rafi Julian</p>
+                        <br />
+                        <br />
+
+                        {/* Special Thanks Section */}
+                        <h1 className="text-2xl mb-2 font-bold">
+                            Special Thanks To
+                        </h1>
+                        <p>Yushrizal, S.ST</p>
                         <p>Game Subject Teacher</p>
+                        <p>SMKN 1 Cibinong</p>
                         <br />
-                        <p>© 2024 SingaCo</p>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+                        {/* Logo Section */}
+                        <div className="mb-8 flex justify-center items-center">
+                            <img
+                                src="/logo.png"
+                                alt="SingaCo Logo"
+                                className="h-40 w-40 object-contain"
+                            />
+                            <h1 className="text-6xl font-bold ml-2">SingaCo</h1>
+                        </div>
                     </div>
                 </div>
                 <p
@@ -96,15 +147,15 @@ const Credit = () => {
             <style>{`
                 @keyframes scroll {
                     0% {
-                        transform: translateY(200%);
+                        transform: translateY(55%);
                     }
                     100% {
-                        transform: translateY(40%);
+                        transform: translateY(-68%);
                     }
                 }
 
                 .animate-scroll {
-                    animation: scroll 20s forwards linear;
+                    animation: scroll 40s forwards linear;
                 }
 
                 .glitch-overlay {
