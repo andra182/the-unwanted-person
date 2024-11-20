@@ -15,16 +15,24 @@ const HomePage = () => {
     const startSFXRef = useRef(null);
 
     useEffect(() => {
-        if (bgMusicRef.current) {
-            bgMusicRef.current.volume = 0.5;
-            bgMusicRef.current.loop = true; 
-            bgMusicRef.current.play();
-        }
-
+        const playMusic = () => {
+            if (bgMusicRef.current) {
+                bgMusicRef.current.volume = 0.5;
+                bgMusicRef.current.loop = true;
+                bgMusicRef.current.play().catch((error) => {
+                    console.warn("Autoplay prevented. Waiting for user interaction.");
+                });
+            }
+        };
+    
+        document.addEventListener("click", playMusic, { once: true });
+    
         return () => {
+            document.removeEventListener("click", playMusic);
             if (bgMusicRef.current) bgMusicRef.current.pause();
         };
     }, []);
+    
 
     useEffect(() => {
         const handleMouseMove = (e) => {
