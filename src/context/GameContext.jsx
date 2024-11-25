@@ -8,8 +8,8 @@ export const useGameContext = () => {
 };
 
 export const GameProvider = ({ children }) => {
-  const [kesenangan, setKesenangan] = useState(50); // Status kesenangan (range 0-100)
-  const [pertemanan, setPertemanan] = useState(50); // Status pertemanan (range 0-100)
+  const [kesenangan, setKesenangan] = useState(0); // Status kesenangan (range 0-100)
+  const [pertemanan, setPertemanan] = useState(0); // Status pertemanan (range 0-100)
   const [feedback, setFeedback] = useState(""); // Feedback yang muncul setelah pilihan
   const [pathCerita, setPathCerita] = useState(0);
 

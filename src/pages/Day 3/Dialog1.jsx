@@ -47,22 +47,22 @@ const Dialog1 = () => {
   const positivePath = () => {
     const handleOptionA = () => {
       setSelectedOption("A");
-      updateKesenangan(8);
-      updatePertemanan(9);
+      updateKesenangan(5);
+      updatePertemanan(5);
       updateFeedback("Aira merasa tenang.");
     };
 
     const handleOptionB = () => {
       setSelectedOption("B");
-      updateKesenangan(10);
-      updatePertemanan(10);
+      updateKesenangan(5);
+      updatePertemanan(5);
       updateFeedback("Aira semakin positif karena merasa dilindungi.");
     };
 
     const handleOptionC = () => {
       setSelectedOption("C");
-      updateKesenangan(6);
-      updatePertemanan(7);
+      updateKesenangan(2);
+      updatePertemanan(2);
       updateFeedback(
         "Aira nampak tenang, tetapi itu terlalu lemah untuk sebuah peringatan. Tetapi itu baik-baik saja."
       );

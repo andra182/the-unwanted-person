@@ -28,15 +28,15 @@ const Dialog3 = () => {
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(10);
-    updatePertemanan(10);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback("Tekad Risa tumbuh lebih kuat. Hubungan semakin erat.");
   };
 
   const handleOptionB = () => {
     setSelectedOption("B");
-    updateKesenangan(7);
-    updatePertemanan(6);
+    updateKesenangan(-5);
+    updatePertemanan(-5);
     updateFeedback(
       "Risa tetap mendukung tetapi dengan rasa takut. Ini membuat bantuan terhambat."
     );
@@ -44,8 +44,8 @@ const Dialog3 = () => {
 
   const handleOptionC = () => {
     setSelectedOption("C");
-    updateKesenangan(3);
-    updatePertemanan(2);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback(
       "Risa mulai meragukan perannya, membuat Aira merasa tidak ada yang mendukung."
     );
@@ -94,14 +94,16 @@ const Dialog3 = () => {
               type: true, // Positif
             },
             {
-              text: "Aku harus berhati-hati, tetapi tetap di sisinya.",
-              action: handleOptionB,
-              type: true, // Positif
-            },
-            {
+
               text: "Mungkin ini terlalu sulit untukku. Apa aku abaikan saja ya Dia?",
               action: handleOptionC,
               type: false, // Negatif
+            },
+            {
+              text: "Aku harus berhati-hati, tetapi tetap di sisinya.",
+              action: handleOptionB,
+              type: true, // Positif
+             
             },
           ]}
           hari="Hari Kedua"

@@ -28,8 +28,8 @@ const Dialog2 = () => {
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(10);
-    updatePertemanan(10);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback(
       "Aira merasakan dukungan. Mulai percaya pada Risa sepenuhnya."
     );
@@ -37,8 +37,8 @@ const Dialog2 = () => {
 
   const handleOptionB = () => {
     setSelectedOption("B");
-    updateKesenangan(8);
-    updatePertemanan(8);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback(
       "Aira mempertimbangkan untuk berbicara lebih banyak, tetapi tetap berhati-hati."
     );
@@ -46,8 +46,8 @@ const Dialog2 = () => {
 
   const handleOptionC = () => {
     setSelectedOption("C");
-    updateKesenangan(2);
-    updatePertemanan(1);
+    updateKesenangan(-5);
+    updatePertemanan(-5);
     updateFeedback("Aira merasa perkataan Risa sangat menusuk.");
   };
   if (showDialog === 1) {
@@ -114,7 +114,7 @@ const Dialog2 = () => {
             text: "Yang sabar ya Ra, inget kalau tuhan gabakal ngasih ujian yang diluar batas kemampuan hambanya. Ada aku kok disini kamu santai aja.",
             action: handleOptionB,
             type: "positive", // Positif
-          },
+          }, 
           {
             text: "Oh pantes kamu jadi kayak gini ya.",
             action: handleOptionC,

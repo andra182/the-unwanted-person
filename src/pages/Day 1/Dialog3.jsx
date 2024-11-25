@@ -17,22 +17,22 @@ const Dialog3 = () => {
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(9);
-    updatePertemanan(8);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback("Aira mulai melihat harapan kecil. Rasa percaya meningkat.");
   };
 
   const handleOptionB = () => {
     setSelectedOption("B");
-    updateKesenangan(10);
-    updatePertemanan(9);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback("Aira termakan ucapan Risa dan mulai membuka hatinya.");
   };
 
   const handleOptionC = () => {
     setSelectedOption("C");
-    updateKesenangan(7);
-    updatePertemanan(6);
+    updateKesenangan(2);
+    updatePertemanan(2);
     updateFeedback(
       "Aira merasa bingung, tetapi tidak menjauh. Potensi masih ada."
     );
@@ -49,7 +49,7 @@ const Dialog3 = () => {
           {
             text: "Kita semua layak mendapatkan teman.",
             action: handleOptionA,
-            type: "positive", // Positif
+            type: "neutral", // Positif
           },
           {
             text: "Itu tidak benar, teman pasti akan membantu jika ada kesulitan.",
@@ -59,7 +59,7 @@ const Dialog3 = () => {
           {
             text: "Tidak kok, berteman itu banyak manfaatnya!",
             action: handleOptionC,
-            type: "neutral", // Netral
+            type: "positive", // Netral
           },
         ]}
         hari="Hari Pertama"

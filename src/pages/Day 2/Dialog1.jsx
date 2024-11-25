@@ -35,8 +35,8 @@ const Dialog1 = () => {
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(7);
-    updatePertemanan(8);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback(
       "Risa menunjukkan keberanian, meskipun risiko meningkat. Beberapa siswa mulai menghargai tindakannya."
     );
@@ -44,19 +44,19 @@ const Dialog1 = () => {
 
   const handleOptionB = () => {
     setSelectedOption("B");
-    updateKesenangan(6);
-    updatePertemanan(7);
+    updateKesenangan(-5);
+    updatePertemanan(-5);
     updateFeedback(
-      "Efek minim, tapi ada tanda bahwa Risa ingin membantu. Situasi tidak berubah drastis."
+      "Pesan ini dapat membuat Aira merasa tidak berharga dan sendirian."
     );
   };
 
   const handleOptionC = () => {
     setSelectedOption("C");
-    updateKesenangan(4);
-    updatePertemanan(3);
+    updateKesenangan(5);
+    updatePertemanan(5);
     updateFeedback(
-      "Pesan ini dapat membuat Aira merasa tidak berharga dan sendirian."
+      "Efek minim, tapi ada tanda bahwa Risa ingin membantu. Situasi tidak berubah drastis."
     );
   };
 
@@ -90,14 +90,15 @@ const Dialog1 = () => {
                 type: "positive", // Positif
               },
               {
-                text: "Tolong berhenti, ini tidak benar.",
-                action: handleOptionB,
-                type: "positive", // Positif
-              },
-              {
                 text: "Abaikan mereka, Aira.",
                 action: handleOptionC,
                 type: "negative", // Negatif
+              },
+              {
+                text: "Tolong berhenti, ini tidak benar.",
+                action: handleOptionB,
+                type: "positive", // Positif
+
               },
             ]}
             hari="Hari Kedua"
