@@ -45,8 +45,8 @@ const Dialog1 = () => {
 
   const handleOptionA = () => {
     setSelectedOption("A");
-    updateKesenangan(5);
-    updatePertemanan(5);
+    updateKesenangan(80);
+    updatePertemanan(80);
     updateFeedback("Aira merasa dihargai. Hubungan membaik.");
   };
 
