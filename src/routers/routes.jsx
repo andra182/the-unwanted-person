@@ -1,3 +1,4 @@
+import About from "../pages/About";
 import Credit from "../pages/Credit";
 import Dirga from "../pages/Dirga";
 import HomePage from "../pages/Home";
@@ -15,6 +16,10 @@ const routes = [
   {
     path: "/test",
     element: <Dirga />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
 ];
 
