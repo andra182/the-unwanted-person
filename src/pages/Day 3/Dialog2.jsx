@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../context/GameContext";
 import PageDialog from "../PageDialog";
@@ -18,11 +18,18 @@ const Dialog2 = () => {
     if (pathCerita === 0) {
       return 'Dian membalas "Helloow kamu siapa Nona sok baik hati??"';
     } else if (pathCerita === 1) {
-      ('Dian membalas "Hah maksud lu apa? Lu mau sok jadi pahlawan kesiangan?"');
+      return 'Dian membalas "Hah maksud lu apa? Lu mau sok jadi pahlawan kesiangan?"';
     }
+    // Default fallback
+    return 'Dian membalas "Helloow kamu siapa Nona sok baik hati??"';
   };
 
-  const [dialog, setDialog] = useState(dialogByPathCerita());
+  const [dialog, setDialog] = useState("");
+
+  useEffect(() => {
+    setDialog(dialogByPathCerita());
+  }, [pathCerita]);
+
   const [showDialog, setShowDialog] = useState(1);
 
   const whenComplete = (param, nextDialog) => {

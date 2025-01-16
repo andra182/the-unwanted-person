@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGameContext } from "../../context/GameContext";
 import SplashScreen from "../../components/SplashScreen";
@@ -12,6 +12,7 @@ const Dialog1 = () => {
     updatePertemanan,
     updateFeedback,
     pathCerita,
+    updatePathCerita,
     feedback,
     kesenangan,
     pertemanan,
@@ -23,8 +24,28 @@ const Dialog1 = () => {
     `Di saat jam istirahat Risa dan Aira sedang memakan bekal mereka berdua di taman sekolah. Tiba tiba ada sekumpulan perempuan yang menghampiri mereka. Ternyata itu adalah The Ladies!`
   );
 
+  useEffect(() => {
+    pathCeritaFunc();
+  }, []);
+
+  function pathCeritaFunc() {
+    console.log(
+      "Current values - Kesenangan:",
+      kesenangan,
+      "Pertemanan:",
+      pertemanan
+    );
+    if (kesenangan >= 63 && pertemanan >= 63) {
+      console.log("Setting positive path (0)");
+      updatePathCerita(0);
+    } else {
+      console.log("Setting negative path (1)");
+      updatePathCerita(1);
+    }
+  }
+
   const handleOpeningComplete = () => {
-    setShowOpening(false); // Menyembunyikan OpeningStory dan menampilkan dialog pembuka
+    setShowOpening(false);
   };
 
   const whenComplete = (param) => {
@@ -158,6 +179,8 @@ const Dialog1 = () => {
       />
     );
   };
+
+  console.log("Current pathCerita:", pathCerita);
 
   return (
     <>
