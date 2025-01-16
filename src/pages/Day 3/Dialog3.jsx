@@ -19,7 +19,7 @@ const Dialog3 = () => {
     if (pathCerita === 0) {
       return "Guys ayo kita pergi dulu, kita akan membalasnya nanti.";
     } else if (pathCerita === 1) {
-      ("Guys gimana nih?? Ada guru BK yang nyamperin kita.");
+      return "Guys gimana nih?? Ada guru BK yang nyamperin kita.";
     }
   };
 
@@ -34,11 +34,10 @@ const Dialog3 = () => {
     "Dikarenakan adu mulut antara Risa dan Dian sangat kencang sampai hampir satu sekolah melihatnya, akhirnya ada seorang guru BK yang menghampiri mereka berdua dan menasehatinya dan menyuruh mereka untuk ke Ruang BK besok.",
   ];
 
-  if (pathCerita === 0 || pathCerita === 2) {
-    var paragraphs = paragraphs_positive;
-  } else if (pathCerita === 1) {
-    var paragraphs = paragraphs_negative;
-  }
+  const paragraphs =
+    pathCerita === 0 || pathCerita === 2
+      ? paragraphs_positive
+      : paragraphs_negative;
 
   const whenComplete = (param, nextDialog) => {
     setTimeout(() => {
@@ -97,7 +96,13 @@ const Dialog3 = () => {
   };
 
   const endDialog = () => {
-    return <OpeningStory paragraphs={paragraphs} endText="Coming soon" />;
+    return (
+      <OpeningStory
+        paragraphs={paragraphs}
+        endText="Coming soon"
+        onComplete={() => navigate("/credit")}
+      />
+    );
   };
 
   if (showDialog === 1) {
