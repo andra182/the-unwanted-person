@@ -21,7 +21,7 @@
 
 Dikembangkan oleh **SingaCo**.
 
-![Logo SingaCo](https://i.ibb.co.com/3yvPpf8/463866043-924201156261291-3726153224151634385-n.jpg)
+<img src="https://i.ibb.co.com/3yvPpf8/463866043-924201156261291-3726153224151634385-n.jpg" alt="Logo SingaCo" width="100" height="100">
 
 Game ini bertujuan untuk **edukasi**.
 
