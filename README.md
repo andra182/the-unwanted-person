@@ -9,7 +9,11 @@
 5. [Manajemen Status](#manajemen-status)
 6. [Menambahkan Konten Baru](#menambahkan-konten-baru)
 7. [Detail Teknis](#detail-teknis)
-8. [Tentang Game](#tentang-game)
+8. [Best Practices](#best-practices)
+9. [Common Issues & Solutions](#common-issues--solutions)
+10. [Contributing](#contributing)
+11. [Dependencies](#dependencies)
+12. [Tentang Game](#tentang-game)
 
 ## Ikhtisar
 
@@ -17,7 +21,7 @@
 
 Dikembangkan oleh **SingaCo**.
 
-![Logo SingaCo](URL_LOGO_DEVELOPER)
+![Logo SingaCo](https://i.ibb.co.com/3yvPpf8/463866043-924201156261291-3726153224151634385-n.jpg)
 
 Game ini bertujuan untuk **edukasi**.
 
@@ -219,6 +223,39 @@ PageDialog.propTypes = {
 - Menggunakan React Router untuk transisi adegan
 - Mendukung progresi linier dan bercabang
 - Mempertahankan status antar adegan
+
+## Best Practices
+
+1. Always initialize dialog state
+2. Include console logs for debugging
+3. Handle both positive and negative paths
+4. Implement proper error handling
+5. Test all dialog branches
+6. Maintain consistent naming conventions
+7. Document all changes
+
+## Common Issues & Solutions
+
+1. **Path Not Updating**: Ensure pathCeritaFunc is called in useEffect
+2. **Dialog Not Showing**: Check dialog state initialization
+3. **Images Not Loading**: Verify asset paths
+4. **State Not Persisting**: Confirm context implementation
+5. **Navigation Issues**: Check route configuration
+
+## Contributing
+
+1. Fork the repository
+2. Create feature branch
+3. Follow coding standards
+4. Test thoroughly
+5. Submit pull request
+
+## Dependencies
+
+- React
+- React Router DOM
+- React Circular Progressbar
+- TypeIt React
 
 ## Tentang Game
 
