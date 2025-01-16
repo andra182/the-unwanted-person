@@ -113,6 +113,14 @@ const HomePage = () => {
         </p>
         <div
           className="text-xl p-1 w-60 my-6 rounded-md font-mono relative group"
+          onClick={() => navigate("/about")}
+        >
+          ABOUT
+          <div className="absolute left-0 right-0 top-0 h-[2px] bg-[#FFFFFF80] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+          <div className="absolute left-0 right-0 bottom-0 h-[2px] bg-[#FFFFFF80] scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+        </div>
+        <div
+          className="text-xl p-1 w-60 rounded-md font-mono relative group"
           onClick={() => navigate("/credit")}
         >
           CREDITS

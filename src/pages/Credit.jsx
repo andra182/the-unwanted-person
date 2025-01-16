@@ -121,9 +121,6 @@ const Credit = () => {
                         <br />
                         <br />
                         <br />
-                        <br />
-                        <br />
-                        <br />
 
                         {/* Logo Section */}
                         <div className="mb-8 flex justify-center items-center">
