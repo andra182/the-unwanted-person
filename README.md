@@ -1,51 +1,58 @@
-# The Unwanted Person - Visual Novel Game Documentation
+# The Unwanted Person - Dokumentasi Game Visual Novel
 
-## Table of Contents
+## Daftar Isi
 
-1. [Overview](#overview)
-2. [Project Structure](#project-structure)
-3. [Game Mechanics](#game-mechanics)
-4. [Dialog System](#dialog-system)
-5. [State Management](#state-management)
-6. [Adding New Content](#adding-new-content)
-7. [Technical Details](#technical-details)
+1. [Ikhtisar](#ikhtisar)
+2. [Struktur Proyek](#struktur-proyek)
+3. [Mekanika Game](#mekanika-game)
+4. [Sistem Dialog](#sistem-dialog)
+5. [Manajemen Status](#manajemen-status)
+6. [Menambahkan Konten Baru](#menambahkan-konten-baru)
+7. [Detail Teknis](#detail-teknis)
+8. [Tentang Game](#tentang-game)
 
-## Overview
+## Ikhtisar
 
-The Unwanted Person is a visual novel game built with React that follows a branching narrative system. The game tracks player choices through two main metrics: "Kesenangan" (Happiness) and "Pertemanan" (Friendship).
+"The Unwanted Person" adalah game visual novel yang dibangun dengan React menggunakan sistem narasi bercabang. Game ini melacak pilihan pemain melalui dua metrik utama: "Kesenangan" dan "Pertemanan."
 
-## Project Structure
+Dikembangkan oleh **SingaCo**.
+
+![Logo SingaCo](URL_LOGO_DEVELOPER)
+
+Game ini bertujuan untuk **edukasi**.
+
+## Struktur Proyek
 
 ```
 src/
-├── components/ # Reusable components
-├── context/ # Game state management
-├── pages/ # Game scenes and dialogs
-│ ├── Day 1/
-│ ├── Day 2/
-│ ├── Day 3/
-│ └── Day 4/
-└── assets/ # Images, audio, etc.
+├── components/   # Komponen yang dapat digunakan kembali
+├── context/      # Manajemen status game
+├── pages/        # Adegan dan dialog game
+│   ├── Day 1/
+│   ├── Day 2/
+│   ├── Day 3/
+│   └── Day 4/
+└── assets/       # Gambar, audio, dll.
 ```
 
-## Game Mechanics
+## Mekanika Game
 
-### Status System
+### Sistem Status
 
-- **Kesenangan (Happiness)**: Range 0-100
-- **Pertemanan (Friendship)**: Range 0-100
-- These values determine story branching and endings
+- **Kesenangan**: Rentang 0-100
+- **Pertemanan**: Rentang 0-100
+- Nilai-nilai ini menentukan percabangan cerita dan akhir game.
 
-### Path System
+### Sistem Jalur
 
-- **Positive Path**: Triggered when both Kesenangan & Pertemanan ≥ 63
-- **Negative Path**: Triggered when either value < 63
+- **Jalur Positif**: Terpicu jika Kesenangan & Pertemanan ≥ 63
+- **Jalur Negatif**: Terpicu jika salah satu nilai < 63
 
-## Dialog System
+## Sistem Dialog
 
-### Creating a New Dialog Scene
+### Membuat Adegan Dialog Baru
 
-1. Create a new file in the appropriate day folder:
+1. Buat file baru di folder hari yang sesuai:
 
 ```javascript
 const DialogX = () => {
@@ -57,48 +64,49 @@ const DialogX = () => {
     kesenangan,
     pertemanan,
   } = useGameContext();
-  // Dialog state setup
+
+  // Setup status dialog
   const [dialog, setDialog] = useState(initialDialog);
-  // Path determination
+
   useEffect(() => {
     pathCeritaFunc();
   }, []);
 };
 ```
 
-### Dialog Options Structure
+### Struktur Opsi Dialog
 
 ```javascript
 const options = [
   {
-    text: "Dialog option text",
+    text: "Teks opsi dialog",
     action: handleOptionA,
-    type: "positive", // or "negative" or "neutral"
+    type: "positive", // atau "negative" atau "neutral"
   },
 ];
 ```
 
-### Adding Response Handlers
+### Menambahkan Handler Respons
 
 ```javascript
 const handleOptionA = () => {
-  updateKesenangan(value); // Add/subtract from happiness
-  updatePertemanan(value); // Add/subtract from friendship
-  updateFeedback("Player feedback message");
+  updateKesenangan(value); // Tambahkan atau kurangi kesenangan
+  updatePertemanan(value); // Tambahkan atau kurangi pertemanan
+  updateFeedback("Pesan umpan balik pemain");
 };
 ```
 
-### Implementing Path-Specific Dialogs
+### Mengimplementasikan Dialog Jalur Tertentu
 
 ```javascript
 const positivePath = () => {
   return (
     <PageDialog
-      NamaKarakter="Character Name"
+      NamaKarakter="Nama Karakter"
       Dialog={dialog}
       gambarkarakter={["/path/to/image.png"]}
       opsi={dialogOptions}
-      hari="Day X"
+      hari="Hari X"
       background="/path/to/background.jpg"
       status={{ kesenangan, pertemanan }}
       onCompleteNavigate="/next/dialog/path"
@@ -107,9 +115,9 @@ const positivePath = () => {
 };
 ```
 
-## State Management
+## Manajemen Status
 
-### GameContext Usage
+### Penggunaan GameContext
 
 ```javascript
 const GameProvider = ({ children }) => {
@@ -118,42 +126,41 @@ const GameProvider = ({ children }) => {
   const [feedback, setFeedback] = useState("");
   const [pathCerita, setPathCerita] = useState(0);
 
-  // Update functions
   const updateKesenangan = (value) => {
     setKesenangan((prev) => Math.max(0, Math.min(100, prev + value)));
   };
 };
 ```
 
-### Accessing Context in Components
+### Mengakses Context dalam Komponen
 
 ```javascript
 const { kesenangan, pertemanan, updateKesenangan } = useGameContext();
 ```
 
-## Adding New Content
+## Menambahkan Konten Baru
 
-### 1. Creating a New Day
+### 1. Membuat Hari Baru
 
-1. Create new folder in `src/pages/`
-2. Add route configuration
-3. Create dialog components
+1. Buat folder baru di `src/pages/`
+2. Tambahkan konfigurasi rute
+3. Buat komponen dialog
 
-### 2. Adding New Dialog
+### 2. Menambahkan Dialog Baru
 
-1. Create dialog component file
-2. Set up initial state and context
-3. Define dialog options and handlers
-4. Implement positive/negative paths
-5. Add navigation logic
+1. Buat file komponen dialog
+2. Atur status awal dan context
+3. Tentukan opsi dialog dan handler
+4. Implementasikan jalur positif/negatif
+5. Tambahkan logika navigasi
 
-### 3. Adding Assets
+### 3. Menambahkan Aset
 
-- Place character images in `/public/DAY{X}/`
-- Place backgrounds in `/public/DAY{X}/`
-- Place audio in `/public/audio/`
+- Tempatkan gambar karakter di `/public/DAY{X}/`
+- Tempatkan latar belakang di `/public/DAY{X}/`
+- Tempatkan audio di `/public/audio/`
 
-### 4. Configuring Routes
+### 4. Mengkonfigurasi Rute
 
 ```javascript
 const day_routes = [
@@ -170,84 +177,62 @@ const day_routes = [
 ];
 ```
 
-## Technical Details
+## Detail Teknis
 
-### Component Properties
+### Properti Komponen
 
-#### PageDialog Props
+#### Props PageDialog
 
 ```javascript
 PageDialog.propTypes = {
-  NamaKarakter: String, // Character name
-  Dialog: String, // Dialog text
-  gambarkarakter: Array, // Character images
-  opsi: Array, // Dialog options
-  hari: String, // Current day
-  background: String, // Background image
-  status: Object, // Game status
-  onCompleteNavigate: String, // Next route
+  NamaKarakter: String, // Nama karakter
+  Dialog: String, // Teks dialog
+  gambarkarakter: Array, // Gambar karakter
+  opsi: Array, // Opsi dialog
+  hari: String, // Hari saat ini
+  background: String, // Gambar latar belakang
+  status: Object, // Status game
+  onCompleteNavigate: String, // Rute berikutnya
 };
 ```
 
-### Status Bar Implementation
+### Implementasi Status Bar
 
 ```javascript
 <StatusBar kesenangan={kesenangan} pertemanan={pertemanan} />
 ```
 
-### Audio Implementation
+### Implementasi Audio
 
 ```javascript
 <AudioPlayer src="/audio/bgm.mp3" />
 ```
 
-### Feedback System
+### Sistem Feedback
 
-- Feedback messages appear after player choices
-- Controlled through `updateFeedback` function
-- Automatically disappears after set duration
+- Pesan feedback muncul setelah pilihan pemain
+- Dikontrol melalui fungsi `updateFeedback`
+- Otomatis hilang setelah durasi tertentu
 
-### Navigation System
+### Sistem Navigasi
 
-- Uses React Router for scene transitions
-- Handles both linear and branching progression
-- Maintains state between scenes
+- Menggunakan React Router untuk transisi adegan
+- Mendukung progresi linier dan bercabang
+- Mempertahankan status antar adegan
 
-## Best Practices
+## Tentang Game
 
-1. Always initialize dialog state
-2. Include console logs for debugging
-3. Handle both positive and negative paths
-4. Implement proper error handling
-5. Test all dialog branches
-6. Maintain consistent naming conventions
-7. Document all changes
+"The Unwanted Person" adalah sebuah game naratif yang menggambarkan perjalanan emosional seorang remaja SMA bernama Risa dan sahabatnya, Aira, yang berjuang melawan perasaan terasing dan intimidasi dari geng sekolah. Dalam dunia yang penuh tantangan ini, pemain akan diajak untuk membantu Risa menemukan tempatnya dan mengatasi berbagai rintangan sosial.
 
-## Common Issues & Solutions
+Di sepanjang cerita, pemain akan membuat keputusan penting setiap harinya yang akan membentuk jalannya alur cerita dan menentukan akhir dari kisah mereka. Dengan alur cerita bercabang selama lima hari, pilihan-pilihan pemain akan membawa Risa ke berbagai kemungkinan akhir yang bisa bersifat positif, netral, atau negatif.
 
-1. **Path Not Updating**: Ensure pathCeritaFunc is called in useEffect
-2. **Dialog Not Showing**: Check dialog state initialization
-3. **Images Not Loading**: Verify asset paths
-4. **State Not Persisting**: Confirm context implementation
-5. **Navigation Issues**: Check route configuration
+### Fitur Utama
 
-## Contributing
+- **Narasi Mendalam**: Setiap hari menawarkan tiga pilihan dialog yang memengaruhi hubungan dan perkembangan cerita.
+- **Akhir yang Beragam**: Tiga kemungkinan akhir (positif, netral, atau negatif) yang mencerminkan perjalanan emosional Risa berdasarkan keputusan pemain.
+- **Tema Relatable**: Fokus pada isu-isu remaja seperti perasaan terasing, persahabatan, dan kekuatan untuk melawan intimidasi.
+- **Alur Cerita Bercabang**: Setiap keputusan membuka jalur cerita yang unik, menciptakan pengalaman bermain yang berbeda setiap kali.
 
-1. Fork the repository
-2. Create feature branch
-3. Follow coding standards
-4. Test thoroughly
-5. Submit pull request
+Apakah Anda akan membantu Risa dan Aira menghadapi rasa keterasingan mereka dan menemukan harapan, atau akankah mereka terjebak dalam keputusasaan? Semua tergantung pada pilihan Anda.
 
-## Dependencies
-
-- React
-- React Router DOM
-- React Circular Progressbar
-- TypeIt React
-
-```
-
-This documentation provides a comprehensive guide for maintaining and extending the game. Let me know if you need any specific section explained in more detail!
-
-```
+Selamat datang di "The Unwanted Person" – sebuah kisah yang mendalam tentang perjuangan, harapan, dan pentingnya membuat keputusan yang tepat.
